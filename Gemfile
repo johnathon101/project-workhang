@@ -22,7 +22,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'dotenv-rails'
 # To use ActiveModel has_secure_password
  gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -30,8 +29,9 @@ gem 'dotenv-rails'
  gem 'jbuilder'
 
 # Use unicorn as the app server
- gem 'unicorn'
+gem 'unicorn'
 
+gem 'dotenv-rails', :groups => [:development, :test]
 # Deploy with Capistrano
 # gem 'capistrano'
 
