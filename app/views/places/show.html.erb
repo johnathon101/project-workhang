@@ -1,0 +1,12 @@
+
+<h1><%= @place.name %></h1>
+<h2><%= @place.lng %>,<%= @place.lat %></h2>
+
+<%= link_to("New Place", new_place_path) %>
+
+<% @places.each do |comment| %>
+  <p>
+    <%= comment.body %>
+    by <%= comment.name %>
+  </p>
+<% end %>

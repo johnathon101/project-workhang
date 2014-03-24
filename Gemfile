@@ -31,7 +31,9 @@ gem 'jquery-rails'
 # Use unicorn as the app server
 gem 'unicorn'
 
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails'
+
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
