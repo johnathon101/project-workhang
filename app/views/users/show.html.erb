@@ -1,0 +1,34 @@
+<!-- This Avatar is only a placeholder, TODO link to real gravatar -->
+
+<div id="leftcol_profile">
+  
+  <div id="green_avatar">
+    <%= link_to image_tag(@avatar) {:action => 'show', :controller => 'users'} :class => 'green_avatar' %>
+  </div>
+
+  <div id="green_button">
+    <%= mail_to(@user.email, "send email") %>
+  </div>
+
+  <div id="leftcol_profile">
+    
+    <h3>
+      MY TOP FIVE
+    </h3>
+    
+    <% if @user.places.size == 0 %>
+      <p><%= @user.fname %> has yet to check in</p>
+    <% else %>
+      <% @user.places.each do %>
+      <ul>
+        <li><li>
+        </ul>
+      <% end %>
+      
+    <% end %>
+  </div>
+  
+</div>
+
+<div id="rightcol_profile">
+</div>

@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @places = User.places.check_in.order()
+    avatar = Gravatar.new("ytmoik@gmail.com").image_url
+    @avatar = avatar + "?s=200"
   end
 
   def new
