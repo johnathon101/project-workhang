@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  def layout
+    if current_user
+    @layout = "logged_in"
+    else
+    @layout = "not_logged_in"
+    end
+    
+    render(:layout => "#{@layout}")
+  end
+  
   def authorize
       if current_user.nil?
         redirect_to :new_login

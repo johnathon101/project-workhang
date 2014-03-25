@@ -2,7 +2,7 @@
 <div id="leftcol_profile">
   
   <div id="green_avatar">
-    <%= link_to image_tag(@avatar, user_path(@user.id)) %> <!-- TODO find out if this image tag works -->
+    <%= link_to image_tag(@avatar) %> <!-- TODO find out if this image tag works -->
   </div>
 
   <div id="green_button">
@@ -15,16 +15,7 @@
       MY TOP FIVE
     </h3>
     
-    <% if @fav_places.size == 0 %>
-      <p><%= @user.fname %> has yet to check in</p>
-    <% else %>
-      <% @fav_places.each do |places| %>
-      <ul>
-        <li><%= places.name %><li>
-        </ul>
-      <% end %>
-      
-    <% end %>
+
   </div>
   
 </div>
