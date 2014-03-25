@@ -15,8 +15,23 @@ class UsersController < ApplicationController
     avatar = Gravatar.new(@user.email).image_url
     @avatar = avatar + "?s=200"
     
-    x = @user.places
-    @fav_places = most_common_value(x)
+    # x = @user.places
+    # @fav_places = most_common_value(x)
+    
+    
+    # TODO add below back in to show.html
+    # 
+    # <% if @fav_places.size == 0 %>
+    #   <p><%= @user.fname %> has yet to check in</p>
+    # <% else %>
+    #   <% @fav_places.each do |places| %>
+    #   <ul>
+    #     <li><%= places.name %><li>
+    #     </ul>
+    #   <% end %>
+    #   
+    # <% end %>
+    
   end
 
   def new

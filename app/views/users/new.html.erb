@@ -1,4 +1,4 @@
-<h1>SIGN UP</h1>
+<h1>MY INFO</h1>
 
 <%= form_for @user do |f| %>
 
@@ -7,37 +7,37 @@
       <em><%= error_msg %>!</em>
     <% end %>
   <% end %>
+  
+  <p>
+    <%= f.label "If you do not have gravatar and would like to provide your own" %>
+    <%= f.label "upload PLACEHOLDER" %>
+  </p>
 
   <p>
-    <%= f.label "First Name:" %>
-    <%= f.text_field :fname %>
+    <%= f.label "bio:" %>
+    <%= f.text_field :bio %>
   </p>
   
   <p>
-    <%= f.label "Last Name:" %>
-    <%= f.text_field :lname %>
+    <%= f.label "projects (include links):" %>
+    <%= f.text_field :projects %>
   </p>
   
   <p>
-    <%= f.label "Gravatar Email:" %>
-    <%= f.email_field :email %>
+    <%= f.label "website (http://yoursite.com):" %>
+    <%= f.text_field :website %>
   </p>
   
   <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.label "twitter (@handle):" %>
+    <%= f.text_field :twitter %>
   </p>
   
   <p>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </p>
-  
-  <p>
-    <%= f.label "Cell Phone Number:" %>
-    <%= f.number_field :phone_num %>
+    <%= f.label "would you mentor during work/hangs?" %>
+    <%= f.radio_button("user", "mentor", "yes") %>
+    <%= f.radio_button("user", "mentor", "no") %>    
   </p>
   
   <%= f.submit "Sign up!"%>
 <% end %>
-
