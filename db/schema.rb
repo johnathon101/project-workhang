@@ -68,11 +68,14 @@ ActiveRecord::Schema.define(:version => 20140325163426) do
     t.text     "lname"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "phone_num"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "phone_num",       :limit => 8
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.text     "bio"
     t.text     "projects"
+    t.string   "twitter"
+    t.string   "website"
+    t.boolean  "mentor"
   end
 
 end

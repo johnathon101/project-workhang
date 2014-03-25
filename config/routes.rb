@@ -22,4 +22,6 @@ ProjectWorkhang::Application.routes.draw do
   resources :members
   resources :checkins
   
+  root :to => 'pages#home'
+  
 end

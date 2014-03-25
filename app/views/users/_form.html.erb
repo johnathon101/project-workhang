@@ -1,21 +1,21 @@
 <%= form_for @user do |f| %>
   <p>
-    <%= f.label :fname %>
+    <%= f.label "First Name" %>
     <%= f.text_field :fname %>
   </p>
   
   <p>
-    <%= f.label :lname %>
+    <%= f.label "Last Name" %>
     <%= f.text_field :lname %>
   </p>
   
   <p>
-    <%= f.label :email %>
+    <%= f.label "Gravatar Email" %>
     <%= f.email_field :email %>
   </p>
   
   <p>
-    <%= f.label :phone_num %>
+    <%= f.label "Cell Phone Number" %>
     <%= f.telephone_field :phone_num %>
   </p>
   
