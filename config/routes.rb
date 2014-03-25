@@ -19,4 +19,7 @@ ProjectWorkhang::Application.routes.draw do
   resources :users
   resources :groups
   resources :places
+  
+  root :to => 'pages#home'
+  
 end
