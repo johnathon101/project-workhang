@@ -19,4 +19,7 @@ ProjectWorkhang::Application.routes.draw do
   resources :users
   resources :groups
   resources :places
+  resources :members
+  resources :checkins
+  
 end

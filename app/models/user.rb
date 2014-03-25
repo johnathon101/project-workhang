@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
     end.values.max_by(&:size).first
   end
   
+  has_many :groups, :through => :members
+  has_many :members
+  
 end
