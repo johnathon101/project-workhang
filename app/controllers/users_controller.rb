@@ -1,13 +1,22 @@
 class UsersController < ApplicationController
+  
   def index
-    @user = User.all
+    @users = User.all
+    
+    @users.each do |user|
+      avatar = Gravatar.new(user.email).image_url
+      @avatar = avatar + "?s=75"
+    end
+    
   end
 
   def show
     @user = User.find(params[:id])
-    @places = User.places.check_in.order()
-    avatar = Gravatar.new("ytmoik@gmail.com").image_url
+    avatar = Gravatar.new(@user.email).image_url
     @avatar = avatar + "?s=200"
+    
+    x = @user.places
+    @fav_places = most_common_value(x)
   end
 
   def new
@@ -40,4 +49,5 @@ class UsersController < ApplicationController
     @user.delete
     redirect_to(:root)
   end
+  
 end

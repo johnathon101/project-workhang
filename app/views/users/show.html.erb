@@ -3,7 +3,7 @@
 <div id="leftcol_profile">
   
   <div id="green_avatar">
-    <%= link_to image_tag(@avatar) {:action => 'show', :controller => 'users'} :class => 'green_avatar' %>
+    <%= link_to image_tag(@avatar, user_path(@user.id)) %>
   </div>
 
   <div id="green_button">
@@ -16,12 +16,12 @@
       MY TOP FIVE
     </h3>
     
-    <% if @user.places.size == 0 %>
+    <% if @fav_places.size == 0 %>
       <p><%= @user.fname %> has yet to check in</p>
     <% else %>
-      <% @user.places.each do %>
+      <% @fav_places.each do |places| %>
       <ul>
-        <li><li>
+        <li><%= places.name %><li>
         </ul>
       <% end %>
       
@@ -31,4 +31,8 @@
 </div>
 
 <div id="rightcol_profile">
+  <h2><%= @user.fname %> <%= @user.lname %></h2>
+  <!-- <h1></h1>  TODO shows where user is currently checked in -->
+  <!-- TODO if not checked in use IF conditional -->
+  <p>@user.bio</p>
 </div>

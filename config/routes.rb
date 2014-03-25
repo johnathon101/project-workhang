@@ -1,6 +1,6 @@
 ProjectWorkhang::Application.routes.draw do
 
-  get "/users" => 'users#index', :as => users
+  get "/users" => 'users#index', :as => :users
   get "/users/new" => 'users#new', :as => :new_user
   get "/users/:id/edit" => 'users#edit', :as => :edit_user
   get "/users/:id" => 'users#show', :as => :view_user
