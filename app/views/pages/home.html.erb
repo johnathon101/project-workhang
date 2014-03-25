@@ -1,3 +1,4 @@
+<% unless current_user %>
 <h1>SIGN UP</h1>
 
 <%= form_for @user do |f| %>
@@ -35,8 +36,9 @@
   
   <p>
     <%= f.label "Cell Phone Number:" %>
-    <%= f.number_field :phone_num %>
+    <%= f.telephone_field :phone_num %>
   </p>
   
-  <%= f.submit "Sign up!"%>
+  <%= f.submit "sign up"%>
+<% end %>
 <% end %>
