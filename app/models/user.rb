@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   
-  attr_accessible :email, :fname, :lname, :password, :password_confirmation, :phone_num
+  attr_accessible :email, :fname, :lname, :password, :password_confirmation, :phone_num, :twitter, :website, :projects, :mentor
   
   def most_common_value(a)
     a.group_by do |e|
