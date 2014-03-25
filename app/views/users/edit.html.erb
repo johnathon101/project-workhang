@@ -1,3 +1,44 @@
-<h1>Edit User</h1>
+<h1>MY INFO</h1>
 
-<%= render :partial => "form" %>
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |error_msg| %>
+      <em><%= error_msg %>!</em>
+    <% end %>
+  <% end %>
+  
+  <p>
+    <%= f.label "If you do not have gravatar and would like to provide your own" %>
+    <%= f.label "upload -PLACEHOLDER-" %>
+  </p>
+
+  <p>
+    <%= f.label "bio:" %>
+    <%= f.text_field :bio %>
+  </p>
+  
+  <p>
+    <%= f.label "projects (include links):" %>
+    <%= f.text_field :projects %>
+  </p>
+  
+  <p>
+    <%= f.label "website:" %>
+    <%= f.text_field :website %>
+  </p>
+  
+  <p>
+    <%= f.label "twitter (@handle):" %>
+    <%= f.text_field :twitter %>
+  </p>
+  
+  <p>
+    <%= f.label "would you mentor during work/hangs?" %>
+    
+    Yes <%= f.radio_button :mentor, true %>
+    No <%= f.radio_button :mentor, false %>    
+  </p>
+  
+  <%= f.submit "Sign up!"%>
+<% end %>
