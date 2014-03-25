@@ -1,13 +1,6 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.all
-    @groups.each do |group|
-      @members = User.where("#{group.id} = ?", group)
-      @members.each do |member|
-        @email = member.email
-        @avatar = Gravatar.new("#{@email}").image_url + "?s=75"
-      end
-    end
   end
   
   def create

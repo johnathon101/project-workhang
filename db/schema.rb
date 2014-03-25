@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140325035032) do
-
-  create_table "check_ins", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "place_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20140325070255) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -26,11 +19,6 @@ ActiveRecord::Schema.define(:version => 20140325035032) do
     t.integer  "mod"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "groups_users", :id => false, :force => true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
   end
 
   create_table "places", :force => true do |t|
@@ -47,11 +35,6 @@ ActiveRecord::Schema.define(:version => 20140325035032) do
     t.boolean  "occupied"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "places_users", :id => false, :force => true do |t|
-    t.integer "place_id"
-    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|

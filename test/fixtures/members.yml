@@ -2,10 +2,10 @@
 
 one:
   user_id: 
-  place_id: 
-  time_out: 2014-03-25 10:32:42
+  group_id: 
+  moderator_id: 1
 
 two:
   user_id: 
-  place_id: 
-  time_out: 2014-03-25 10:32:42
+  group_id: 
+  moderator_id: 1

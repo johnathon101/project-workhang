@@ -10,8 +10,7 @@ ProjectWorkhang::Application.routes.draw do
   get "/about" => 'pages#about', :as => :about
   get "/checkout/:id" => 'check_outs#checkout', :as => :checkout
   get "/logout" => 'pages#logout', :as => :logout
-  post "/logins" => 'logins#create'
-  delete "/logins/:id" => 'logins#destroy'
+  resources :logins, :only => [:create, :destroy]
   resources :users
   resources :groups
   resources :places
