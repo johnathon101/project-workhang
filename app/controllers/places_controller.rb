@@ -86,5 +86,5 @@ class PlacesController < ApplicationController
     @checked_in=Place.find_by_occupied(true)
     return @checked_in
   end
-    
+
 end

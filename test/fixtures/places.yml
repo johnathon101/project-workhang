@@ -11,6 +11,8 @@ one:
   review_id: 1
   lat: 1
   lng: 1
+  occupied: false
+
 
 two:
   name: MyString
@@ -23,3 +25,5 @@ two:
   review_id: 1
   lat: 1
   lng: 1
+  occupied: false
+

@@ -1,4 +1,5 @@
 module PlacesHelper
+
   
   def show_checked_in
     @places=Place.all
