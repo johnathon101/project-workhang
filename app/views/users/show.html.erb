@@ -1,9 +1,8 @@
-<!-- This Avatar is only a placeholder, TODO link to real gravatar -->
 
 <div id="leftcol_profile">
   
   <div id="green_avatar">
-    <%= link_to image_tag(@avatar, user_path(@user.id)) %>
+    <%= link_to image_tag(@avatar, user_path(@user.id)) %> <!-- TODO find out if this image tag works -->
   </div>
 
   <div id="green_button">
@@ -32,12 +31,16 @@
 
 <div id="rightcol_profile">
   
-  <h2><%= @user.fname %> <%= @user.lname %></h2>
+  <h2><%= @user.fname.upcase %> <%= @user.lname.upcase %></h2>
   <!-- <h1></h1>  TODO shows where user is currently checked in -->
   <!-- TODO if not checked in use IF conditional -->
   
   <p><%= @user.bio %></p>
   
+  <h2>PROJECTS</h2>
+  <p><%= @user.projects %></p>
   
+  <h2>RECENT CHECK-INS</h2>
+  <p></p>  <!-- TODO this is where you show most recent checkins by user -->
   
 </div>
