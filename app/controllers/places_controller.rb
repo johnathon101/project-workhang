@@ -17,7 +17,7 @@ class PlacesController < ApplicationController
     val_loc=JSON.load(open("https://maps.googleapis.com/maps/api/place/textsearch/json?key=#{ENV["GOOGLE_API_KEY"]}&location=41.2918589,-96.0812485&radius=50000&query=#{search_query}&sensor=false"))
     
     #Find lat/long from hash returned on the JSON request, assign to variables
-    if val_loc != ""
+    if val_loc
       latitude=val_loc["results"][0]["geometry"]["location"]["lat"]
       longitude=val_loc["results"][0]["geometry"]["location"]["lng"]
     else 
@@ -32,7 +32,7 @@ class PlacesController < ApplicationController
     else
       @place.name = val_loc["results"][0]["name"]
       format_address=val_loc["results"][0]["formatted_address"]
-      @place.street = format_address[0]
+      @place.street = format_address
       @place.lng=longitude
       @place.lat=latitude
       @place.save
@@ -58,7 +58,7 @@ class PlacesController < ApplicationController
   end
   
   def show
-    @places= Place.all
+    @place= Place.find_by_id(params[:id])
   end
   
   
