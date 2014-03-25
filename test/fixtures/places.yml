@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  desc: MyString
+  street: MyString
+  city: MyString
+  zipcode: 1
+  hours: MyString
+  user_id: 1
+  review_id: 1
+  lat: 1
+  lng: 1
+  occupied: false
+
+two:
+  name: MyString
+  desc: MyString
+  street: MyString
+  city: MyString
+  zipcode: 1
+  hours: MyString
+  user_id: 1
+  review_id: 1
+  lat: 1
+  lng: 1
+  occupied: false
