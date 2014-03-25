@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  #Create methods to respond to js calls
   respond_to :json, :js
   
   def new
@@ -32,7 +33,9 @@ class PlacesController < ApplicationController
       @place.street = format_address
       @place.lng=longitude
       @place.lat=latitude
+      @place.photoref = val_loc["results"][0]["photos"][0]["photo_reference"] || " "
       @place.save
+      
       redirect_to("/places/#{@place.id}")
     end
   end
@@ -65,74 +68,23 @@ class PlacesController < ApplicationController
   
   def show
     @place = Place.find_by_id(params[:id])
+    @imgloc="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@place.photoref}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"
   end
   
-  
+  #Return correctly formatted string of coordinates for locations in db by passing in id
+  def deliver_coordinates(id)
+    @created_place=Place.find_by_id(id)
+    return coordinates="#{@created_place.lng},#{@created_place.lat}"
+  end
+  #Return name of location by passing in id
+  def deliver_name(id)
+    @created_place=Place.find_by_id(id)
+    @created_place.name
+  end
+  #Return an array of objects where users are checked in currently, will run an each on to create js markers for google map(helper?)
+  def deliver_checked_in
+    @checked_in=Place.find_by_occupied(true)
+    return @checked_in
+  end
+    
 end
-#https://maps.googleapis.com/maps/api/place/radarsearch/json?location=51.503186,-0.126446&radius=5000&types=museum&sensor=false&key=AddYourOwnKeyHere
-#GOOGLE API FOR TEXT PLACE SEARCH
-##
-#https://maps.googleapis.com/maps/api/place/textsearch/output?parameters
-# where output may be either of the following values:
-# 
-#     json (recommended) indicates output in JavaScript Object Notation (JSON)
-#     xml indicates output as XML
-# 
-# Certain parameters are required to initiate a search request. As is standard in URLs, all parameters are separated using the ampersand (&) character.
-# 
-# Required parameters
-# 
-#     query — The text string on which to search, for example: "restaurant". The Place service will return candidate matches based on this string and order the results based on their perceived relevance.
-#     key — Your application's API key. This key identifies your application for purposes of quota management and so that Places added from your application are made immediately available to your app. Visit the APIs Console to create an API Project and obtain your key.
-#     sensor — Indicates whether or not the Place request came from a device using a location sensor (e.g. a GPS) to determine the location sent in this request. This value must be either true or false.
-# 
-# Optional parameters
-# 
-#     location — The latitude/longitude around which to retrieve Place information. This must be specified as latitude,longitude. If you specify a location parameter, you must also specify a radius parameter.
-#     radius — Defines the distance (in meters) within which to bias Place results. The maximum allowed radius is 50 000 meters. Results inside of this region will be ranked higher than results outside of the search circle; however, prominent results from outside of the search radius may be included.
-#     language — The language code, indicating in which language the results should be returned, if possible. See the list of supported languages and their codes. Note that we often update supported languages so this list may not be exhaustive.
-#     minprice and maxprice (optional) — Restricts results to only those places within the specified price level. Valid values are in the range from 0 (most affordable) to 4 (most expensive), inclusive. The exact amount indicated by a specific value will vary from region to region.
-#     opennow — Returns only those Places that are open for business at the time the query is sent. Places that do not specify opening hours in the Google Places database will not be returned if you include this parameter in your query.
-#     types — Restricts the results to Places matching at least one of the specified types. Types should be separated with a pipe symbol (type1|type2|etc). See the list of supported types.
-#     zagatselected — Add this parameter (just the parameter name, with no associated value) to restrict your search to locations that are Zagat selected businesses. This parameter must not include a true or false value. The zagatselected parameter is experimental, and is only available to Places API enterprise customers.
-# 
-# You may bias results to a specified circle by passing a location and a radius parameter. This will instruct the Place service to prefer showing results within that circle; results outside of the defined area may still be displayed.
-# 
-# Maps API for Business customers should not include a client or signature parameter with their requests.
-# 
-# The below example shows a search for restaurants near Sydney.
-# 
-# https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&sensor=true&key=AddYourOwnKeyHere
-# 
-# Note that you'll need to replace the key in this example with your own key in order for the request to work in your application.
-# Radar Search Requests
-# 
-# The Google Places API Radar Search Service allows you to search for up to 200 Places at once, but with less detail than is typically returned from a Text Search or Nearby Search request. With Radar Search, you can create applications that help users identify specific areas of interest within a geographic area. The search response will include up to 200 Places, identified only by their geographic coordinates and Place reference. You can send a Place Details request for more information about any of the Places in the response.
-# 
-# Radar Search shares the same usage limits and quota as Text Search and Nearby Search. However, the Radar Search Service is subject to a 5-times multiplier. That is, each Radar Search request that you make will count as 5 requests against your quota.
-# 
-# A Place Radar Search request is an HTTP URL of the following form:
-# 
-# https://maps.googleapis.com/maps/api/place/radarsearch/output?parameters
-# 
-# where output may be either of the following values:
-# 
-#     json (recommended) indicates output in JavaScript Object Notation (JSON)
-#     xml indicates output as XML
-# 
-# Certain parameters are required to initiate a search request. As is standard in URLs, all parameters are separated using the ampersand (&) character.
-# 
-# Required parameters
-# 
-#     key — Your application's API key. This key identifies your application for purposes of quota management and so that Places added from your application are made immediately available to your app. Visit the APIs Console to create an API Project and obtain your key.
-#     location — The latitude/longitude around which to retrieve Place information. This must be specified as latitude,longitude.
-#     radius — Defines the distance (in meters) within which to return Place results. The maximum allowed radius is 50 000 meters.
-#     sensor — Indicates whether or not the Place request came from a device using a location sensor (e.g. a GPS) to determine the location sent in this request. This value must be either true or false.
-# 
-# Optional parameters
-# 
-# A Radar Search request must include at least one of keyword, name, or types. Other parameters are completely optional.
-# 
-#     keyword — A term to be matched against all content that Google has indexed for this Place, including but not limited to name, type, and address, as well as customer reviews and other third-party content.
-#     minprice and maxprice (optional) — Restricts results to only those places within the specified price level. Valid values are in the range from 0 (most affordable) to 4 (most expensive), inclusive. The exact amount indicated by a specific value will vary from region to region.
-#     name — One or more terms to be matched against the names of Places, separated with a space character. Results will be restricted to those containing the passed name values. Note that a Place may have additional names associated with it, beyond its listed name. The API will try to match the passed name value against all of these names; as a result, Places may be returned in the results whose listed names do not match the search term, but whose associated names do.

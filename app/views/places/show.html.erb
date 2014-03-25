@@ -1,7 +1,9 @@
 
 <h1><%= @place.name %></h1>
-  
+<br>
+
+<img src= <%= @imgloc %> />
 <h2><%= @place.lng %>,<%= @place.lat %></h2>
-<h3><%= @place.street %>
+<h3><%= @place.street %></h3>
 <%= link_to("New Place", new_place_path) %>
 
