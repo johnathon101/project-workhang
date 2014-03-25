@@ -7,7 +7,7 @@ gem 'rails', '3.2.17'
 
 gem 'pg'
 
-
+gem 'json'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -32,8 +32,7 @@ gem 'jquery-rails'
 gem 'unicorn'
 
 gem 'dotenv-rails'
-
-
+require 'open-uri'
 # Deploy with Capistrano
 # gem 'capistrano'
 

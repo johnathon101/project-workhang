@@ -11,12 +11,18 @@ class PlacesController < ApplicationController
     #User submitted a query to find a place:
     @place = Place.new(params[:place])
     #Assign search query submitted by user, format
-    search_query=(@place.name).downcase.strip
+    search_query=(@place.name).downcase.strip.gsub(' ','+')
     #Send search query to google to find the location(Validate Location)
-    val_loc=JSON.load(open("https://maps.googleapis.com/maps/api/place/textsearch/json?location=41.2918589,-96.0812485&radius=50000&query=#{search_query}&sensor=false"))
+    
+    val_loc=JSON.load(open("https://maps.googleapis.com/maps/api/place/textsearch/json?key=#{ENV["GOOGLE_API_KEY"]}&location=41.2918589,-96.0812485&radius=50000&query=#{search_query}&sensor=false"))
+    
     #Find lat/long from hash returned on the JSON request, assign to variables
-    latidute=val_loc["results"][0]["geometry"]["location"]["lat"]
-    longitude=val_loc["results"][0]["geometry"]["location"]["lng"]
+    if val_loc != ""
+      latitude=val_loc["results"][0]["geometry"]["location"]["lat"]
+      longitude=val_loc["results"][0]["geometry"]["location"]["lng"]
+    else 
+      redirect_to("/")
+    end
     #Query server to find out if the location is in the database already,
     @check_db=Place.where({:lat=>latitude, :lng=>longitude}).first
     #If place is in db go to that page
@@ -25,7 +31,7 @@ class PlacesController < ApplicationController
       #Save the new location to the database using the information from google api as a helper
     else
       @place.name = val_loc["results"][0]["name"]
-      format_address=val_loc["results"][0]["formatted_adress"].split(',')
+      format_address=val_loc["results"][0]["formatted_address"]
       @place.street = format_address[0]
       @place.lng=longitude
       @place.lat=latitude
