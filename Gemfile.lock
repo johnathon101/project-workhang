@@ -129,6 +129,7 @@ DEPENDENCIES
   gravatar-ultimate
   jbuilder
   jquery-rails
+  json
   pg
   rails (= 3.2.17)
   sass-rails (~> 3.2.3)

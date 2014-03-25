@@ -1,0 +1,17 @@
+<h1>Enter the name of the place:</h1>
+
+
+    <%= form_for @place do |i| %>
+      <% if @place.errors.any? %>
+        <%@place.errors.full_messages.each do |error_msg| %>
+          <p><%= error_msg %></p>
+        <% end %>
+      <% end %>
+  
+  <p>
+    <%= i.label :name %>
+    <%= i.text_field :name %>
+  </p>
+
+    <%= i.submit %>
+<% end %>

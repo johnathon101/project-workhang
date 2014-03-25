@@ -1,5 +1,9 @@
 ProjectWorkhang::Application.routes.draw do
 
+  get  "/places/new_manual/:name" => 'places#new_manual'
+  post '/places/new_manual' =>'places#new_manual_save', :as => :new_manual_save
+
+
   get "/users" => 'users#index', :as => :users
   get "/users/new" => 'users#new', :as => :new_user
   get "/users/:id/edit" => 'users#edit', :as => :edit_user

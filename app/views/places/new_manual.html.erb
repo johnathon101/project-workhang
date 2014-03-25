@@ -1,0 +1,36 @@
+<h1>Google could not find this location using: <%= params[:name] %></h1>
+<p>Please enter the information below:</p>
+
+    <%= form_for @place, :url => {:action => 'places#new_manual_save'} do |p| %>
+      <% if @place.errors.any? %>
+        <%@place.errors.full_messages.each do |error_msg| %>
+          <p><%= error_msg %></p>
+        <% end %>
+      <% end %>
+  
+  <p>
+    <%= p.label :name %>
+    <%= p.text_field :name %>
+  </p>
+  
+  <p>
+    <%= p.label :desc %>
+    <%= p.text_field :desc %>
+  </p>
+  <p>
+    <%= p.label :street %>
+    <%= p.text_field :street %>
+  </p>
+  <p>
+    <%= p.label :city %>
+    <%= p.text_field :city %>
+  </p>
+  <p>
+    <%= p.label :zipcode %>
+    <%= p.text_field :zipcode %>
+  </p>
+
+
+
+    <%= p.submit %>
+<% end %>

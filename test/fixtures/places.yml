@@ -13,6 +13,7 @@ one:
   lng: 1
   occupied: false
 
+
 two:
   name: MyString
   desc: MyString
@@ -25,3 +26,4 @@ two:
   lat: 1
   lng: 1
   occupied: false
+
