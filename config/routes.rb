@@ -1,6 +1,8 @@
 ProjectWorkhang::Application.routes.draw do
-  
+  get  "/places/new_manual/:name" => 'places#new_manual'
+  post '/places/new_manual' =>'places#new_manual_save', :as => :new_manual_save
   resources :places
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

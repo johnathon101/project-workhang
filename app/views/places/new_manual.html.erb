@@ -1,7 +1,7 @@
-<h1>Google could not find this location using: <%= @name %></h1>
-<p>Please enter the information details below:</p>
+<h1>Google could not find this location using: <%= params[:name] %></h1>
+<p>Please enter the information below:</p>
 
-    <%= form_for @place do |p| %>
+    <%= form_for @place, :url => {:action => 'places#new_manual_save'} do |p| %>
       <% if @place.errors.any? %>
         <%@place.errors.full_messages.each do |error_msg| %>
           <p><%= error_msg %></p>
