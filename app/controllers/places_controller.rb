@@ -27,7 +27,7 @@ class PlacesController < ApplicationController
     @check_db=Place.where({:lat=>latitude, :lng=>longitude}).first
     #If place is in db go to that page
     if @check_db
-      redirect_to("/show/#{@check_db.id}")
+      redirect_to("/places/#{@check_db.id}")
       #Save the new location to the database using the information from google api as a helper
     else
       @place.name = val_loc["results"][0]["name"]

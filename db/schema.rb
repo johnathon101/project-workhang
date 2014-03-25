@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140324181711) do
+ActiveRecord::Schema.define(:version => 20140325012409) do
 
   create_table "places", :force => true do |t|
     t.string   "name"
@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(:version => 20140324181711) do
     t.string   "hours"
     t.integer  "user_id"
     t.integer  "review_id"
-    t.integer  "lat"
-    t.integer  "lng"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.boolean  "occupied"
+    t.float    "lat"
+    t.float    "lng"
   end
 
 end
