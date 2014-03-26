@@ -74,9 +74,11 @@ class GroupsController < ApplicationController
   
   def destroy
     @group = Group.find(params[:id])
+    @member = Member.where(group_id: params[:id])
     
     # Try @group.destroy if the below doesn't work.
     @group.delete
+    @member.delete_all
     
     redirect_to :groups
   end

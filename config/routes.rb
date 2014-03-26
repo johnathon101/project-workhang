@@ -11,15 +11,16 @@ ProjectWorkhang::Application.routes.draw do
   get "/groups/:id/ban" => 'groups#ban_confirm', :as => :ban_confirm
   post "/places/results" => "places#results"
   get "/places/check_db/:lng/:lat/:pos" => "places#check_db"
+  
+  get "/checkout" => 'checkins#checkout', :as => :checkout
+  post "/checkout/:id" => 'checkins#create', :as => :checkin
+
   resources :logins
   resources :users
   resources :groups
   resources :places
   resources :members
   resources :checkins
-  
-  post "/groups/:id/leave" => 'groups#leave', :as => :leave
-  post "/groups/:id/join" => 'groups#join', :as => :join
   
   root :to => 'pages#home'
   

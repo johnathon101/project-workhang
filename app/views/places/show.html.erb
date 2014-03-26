@@ -5,5 +5,15 @@
 <img src= <%= @imgloc %> />
 <h2><%= @place.lng %>,<%= @place.lat %></h2>
 <h3><%= @place.street %></h3>
+
 <%= link_to("New Place", new_place_path) %>
+
+<% if @check_ins == [] %>
+  <%= link_to("Check in!", checkin_path(@place.id), :method => :post) %>
+<% else %>
+  <%= link_to("Check out!", :checkout, :method => :get) %>
+<% end %>
+
+
+
 
