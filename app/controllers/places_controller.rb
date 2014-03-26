@@ -81,6 +81,8 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find_by_id(params[:id])
     @imgloc="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@place.photoref}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"
+    @user = current_user
+    @check_ins = current_user.check_ins.where(time_out: nil && place_id == @place.id)
   end
   
   #Return correctly formatted string of coordinates for locations in db by passing in id

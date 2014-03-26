@@ -7,8 +7,9 @@ ProjectWorkhang::Application.routes.draw do
   get "/about" => 'pages#about', :as => :about
   # get "/checkout/:id" => 'pages#checkout', :as => :checkout
   get "/logout" => 'pages#logout', :as => :logout
-  get "/groups/:id/delete" => 'groups#delete_confirm', :as => :delete_confirm
-  get "/groups/:id/ban" => 'groups#ban_confirm', :as => :ban_confirm
+  
+  get "/checkout" => 'checkins#checkout', :as => :checkout
+  post "/checkout/:id" => 'checkins#create', :as => :checkin
 
   resources :logins
   resources :users
@@ -16,9 +17,6 @@ ProjectWorkhang::Application.routes.draw do
   resources :places
   resources :members
   resources :checkins
-  
-  post "/groups/:id/leave" => 'groups#leave', :as => :leave
-  post "/groups/:id/join" => 'groups#join', :as => :join
   
   root :to => 'pages#home'
   
