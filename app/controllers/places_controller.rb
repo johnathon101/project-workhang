@@ -33,7 +33,7 @@ class PlacesController < ApplicationController
       @place.street = format_address
       @place.lng=longitude
       @place.lat=latitude
-      if val_loc(["results"][0]["photos"][0]).try(["photo_reference"]) != nil
+      if val_loc["results"][0]["photos"]!=nil
           @place.photoref=val_loc["results"][0]["photos"][0]["photo_reference"]
       else 
         @place.photoref=""
