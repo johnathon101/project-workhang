@@ -15,6 +15,8 @@ class UsersController < ApplicationController
     avatar = Gravatar.new(@user.email).image_url
     @avatar = avatar + "?s=200"
     
+    # @check_ins = User.check_ins.first(5)
+    
     # x = @user.places
     # @fav_places = most_common_value(x)
     
@@ -32,6 +34,10 @@ class UsersController < ApplicationController
     #   
     # <% end %>
     
+    #<% @check_ins.each do |l|%>
+    #<p><%= l.place_id.name %></p>
+    #<% end %> 
+    
   end
   
   def new
@@ -47,7 +53,8 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       
       if @user.save
-        # session[:user_id] = @user.id
+        session[:user_id] = @user.id  
+        
         redirect_to(edit_user_path(@user.id))
       else
         render "new"
@@ -59,7 +66,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
     
-    redirect_to(user_path(@user.id))
+    redirect_to(:groups)
   end
   
   def destroy
