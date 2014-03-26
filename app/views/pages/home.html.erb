@@ -42,3 +42,9 @@
   <%= f.submit "sign up"%>
 <% end %>
 <% end %>
+<% if CheckIn.all != [] %>
+<p>There are check ins.</p>
+<% else %>
+<h2>Well, shoot. No one is working right now. Not even you.</h2>
+<p>Be the first to work, and check into a place above.</p>
+<% end %>

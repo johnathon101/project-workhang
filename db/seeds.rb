@@ -9,7 +9,7 @@
 
 
 # Group.create(name: "Pro Rubyists Unite", desc: "Group where we make fun of other languages", mod: [1])
-# Place.create(name: 'Starbucks', desc: "America's favorite coprorate coffee", street: "100 Broadway", city: "Omaha", zipcode: "68114", user_id: [1], lat: [41.258314], lng: [-96.023587], occupied: true)
+Place.create(name: 'Starbucks', desc: "America's favorite corporate coffee", street: "100 Broadway", city: "Omaha", zipcode: "68114", user_id: [1], lat: [41.258314], lng: [-96.023587], occupied: true)
 # User.create(fname: "John", lname: "Lueth", email: "ja.lueth@gmail.com", password: "password", password_confirmation: "password")
 # User.create(fname: "Yofred", lname: "Moik", email: "ytmoik@gmail.com", password: "password", password_confirmation: "password")
 # User.create(fname: "Michael", lname: "Todd", email: "mikejtodd@gmail.com", password: "password", password_confirmation: "password")

@@ -17,12 +17,30 @@
   
   <div id="nav_links">
     <ul>
-      <li><a href="/places">PLACES</a></li>
-      <li><a href="/groups">GROUPS</a></li>
+      <li><a href="/places">PLACES</a></li>/
+      <li><a href="/groups">GROUPS</a></li>/
       <li><a href="/about">ABOUT</a></li>
     </ul>
   </div>
   
+  <% @check_ins = current_user.check_ins.where(time_out: nil) %>
+  <% if @check_ins == [] %>
+    <form method="post" action="/places/results">
+    <input type="text" name="query" placeholder="Check into a place."><br>
+    <input type="submit" value="Search">
+    </form>
+  <% else %>
+    <% @place_id = @check_ins.first.place_id %>
+    <% @place = Place.find(@place_id)%>
+    <div id="check_in_status"><p>I'm at <%= @place.name %>.</p>
+  <% end %></div><a href="/checkout"><div id="checkout_button">X</div></a>
+  
+  <div id="profpic">
+  <a href="/users/<%= current_user.id %>"><img src="<%= Gravatar.new("#{current_user.email}").image_url + "?s=75" %>"></a>
+  </div>
+  <div id="settings">
+    <a href="/settings"><img src="https://s3.amazonaws.com/WorkHang/System-Settings-icon.png" width=35></a>
+  </div>
   <div id="logout">
     <a href="/logout"><img src="https://s3.amazonaws.com/WorkHang/Power.png"></a>
   </div>
@@ -53,4 +71,13 @@
 <%= yield %>
 </div>
 </body>
+<footer>
+    <div id="ocs">
+      <a href="http://omahacodeschool.com" target="_blank"><img src="https://s3.amazonaws.com/WorkHang/OCSlogo" alt="omaha code school" width=85></a>
+    </div>
+    <div id="credit">
+      <p>made by Johnathon Lueth, Michael Todd &amp; Yofred Moik<br>
+        for <a href="http://omahacodeschool.com" target="_blank">Omaha Code School</a> &copy; 2014</p>
+    </div>
+</footer>
 </html>
