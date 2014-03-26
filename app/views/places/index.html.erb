@@ -1,3 +1,9 @@
 
 <div id="map-canvas"></div>
 <!--<%=  @places=Place.all %> -->
+<div id="search_place">
+<form method="post" action="/places/results">
+<h3>Don't See Your Place? Add It Here:</h3><input type="text" name="query"><br>
+<input type="submit" value="Search">
+</form>
+</div>

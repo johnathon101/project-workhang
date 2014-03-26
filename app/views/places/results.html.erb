@@ -1,0 +1,12 @@
+<% i=0 %>
+
+<% @val_loc["results"].each do |place| %>
+ <% lat = place["geometry"]["location"]["lat"]%>
+ <% lng = place["geometry"]["location"]["lng"] %>
+ <% f=lat.to_s.gsub(".","^") %>
+ <% g=lng.to_s.gsub(".","^") %>
+ <%= link_to(place["name"], "/places/check_db/#{f}/#{g}/#{i}") %>
+  <%=  place["formatted_address"] %>
+  <% i+=1 %><br>
+<% end %>
+<%= link_to("New Location - Manually Created", :create_manually) %>
