@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20140325193146) do
-
-
-  create_table "check_ins", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "place_id"
-    t.datetime "time_out"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
 
   create_table "check_ins", :force => true do |t|
     t.integer  "user_id"

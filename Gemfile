@@ -25,9 +25,6 @@ end
 
 gem 'gon'
 
-gem 'gravatar-ultimate'
-
-
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

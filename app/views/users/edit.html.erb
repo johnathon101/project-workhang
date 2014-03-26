@@ -1,5 +1,9 @@
 <h1>MY INFO</h1>
 
+  <div id="green_avatar">
+    <%= link_to image_tag(@avatar) %>
+  </div>  
+
 <%= form_for @user do |f| %>
 
   <% if @user.errors.any? %>
@@ -15,12 +19,12 @@
 
   <p>
     <%= f.label "bio:" %>
-    <%= f.text_field :bio %>
+    <%= f.text_area :bio, :size => 100, :rows => 10 %>
   </p>
   
   <p>
     <%= f.label "projects (include links):" %>
-    <%= f.text_field :projects %>
+    <%= f.text_area :projects, :size => 100, :rows => 10 %>
   </p>
   
   <p>

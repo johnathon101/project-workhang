@@ -46,23 +46,26 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    avatar = Gravatar.new(@user.email).image_url
+    @avatar = avatar + "?s=75"
   end
 
   def create
     
-      @user = User.new(params[:user])
+    @user = User.new(params[:user])    
       
-      if @user.save
-        session[:user_id] = @user.id  
+    if @user.save
+      session[:user_id] = @user.id  
         
-        redirect_to(edit_user_path(@user.id))
-      else
-        render "new"
-      end
+      redirect_to(edit_user_path(@user.id))
+    else
+      render "new"
+    end
 
   end
 
   def update
+    
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
     
