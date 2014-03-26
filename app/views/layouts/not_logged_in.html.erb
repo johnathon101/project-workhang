@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Work/Hang</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<nav>
+  <div id="logo">
+    
+  </div>
+  <div id="login">
+    <%= form_tag logins_path do %>
+  
+      <p>
+        <%= label_tag :email %>
+        <%= text_field_tag :email, placeholder: 'email' %>
+      </p>
+  
+      <p>
+        <%= label_tag :password %>
+        <%= password_field_tag :password, placeholder: 'password' %>
+      </p>
+  
+      <%= submit_tag "log in" %>
+    <% end %>
+  </div>
+</nav>
+<body>
+<div id="container">
+<%= yield %>
+</div>
+</body>
+</html>

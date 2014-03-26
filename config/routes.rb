@@ -15,6 +15,9 @@ ProjectWorkhang::Application.routes.draw do
   resources :members
   resources :checkins
   
+  post "/groups/:id/leave" => 'groups#leave', :as => :leave
+  post "/groups/:id/join" => 'groups#join', :as => :join
+  
   root :to => 'pages#home'
   
 end
