@@ -22,7 +22,7 @@
 <% @members = @group.users %>
 <% @members.shift %>
 <% if @members != [] %>
-<h1>MEMBERS</h1>
+<h1>OTHER MEMBERS</h1>
 <% end %>
 <div id="members">
   <% @members.each do |member| %>
@@ -40,8 +40,8 @@
   </div>
   <% end %>
   <div id="name_and_ban">
-    <p><%= member.fname %> <%= member.lname %></p>
-    <div id="red_button"><%= link_to("ban", "/groups/#{@group.id}/ban", :method => :ban)%></div>
+    <p><a href="/users/<%= member.id %>"><%= member.fname %> <%= member.lname %></a></p>
+    <div id="red_button"><a href="/groups/<%= @group.id %>/ban?user_id=<%= member.id %>">ban</a></div>
   </div>
   <% end %>
   <hr>

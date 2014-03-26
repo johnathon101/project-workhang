@@ -8,6 +8,7 @@ ProjectWorkhang::Application.routes.draw do
   # get "/checkout/:id" => 'pages#checkout', :as => :checkout
   get "/logout" => 'pages#logout', :as => :logout
   get "/groups/:id/delete" => 'groups#delete_confirm', :as => :delete_confirm
+  get "/groups/:id/ban" => 'groups#ban_confirm', :as => :ban_confirm
 
   resources :logins
   resources :users

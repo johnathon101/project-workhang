@@ -28,6 +28,11 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
   
+  def ban_confirm
+    @group = Group.find(params[:id])
+    @user = User.find(params[:user_id])
+  end
+  
   def edit
     @group = Group.find(params[:id])
   end
@@ -64,6 +69,7 @@ class GroupsController < ApplicationController
   
   def ban
     @group = Group.find(params[:id])
+    @user = User.find(params[:user_id])
   end
   
   def destroy
