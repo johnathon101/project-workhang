@@ -47,7 +47,7 @@ function initialize() {
          (function(marker, i){
            google.maps.event.addListener(marker, 'click', function() {
              infowindow = new google.maps.InfoWindow({
-               content: gon.places[i]["name"]
+               content: (gon.places[i]["name"]).link("/places/"+(i+1)) 
              });
              infowindow.open(myMap,marker);
            });
