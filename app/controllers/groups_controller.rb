@@ -24,6 +24,10 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
   
+  def delete_confirm
+    @group = Group.find(params[:id])
+  end
+  
   def edit
     @group = Group.find(params[:id])
   end
@@ -56,6 +60,10 @@ class GroupsController < ApplicationController
     })
     
     redirect_to :groups
+  end
+  
+  def ban
+    @group = Group.find(params[:id])
   end
   
   def destroy

@@ -38,9 +38,12 @@
       <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
     </div>
   </div>
+  <% end %>
   <div id="name_and_ban">
-    member.fname member.lname
+    <p><%= member.fname %> <%= member.lname %></p>
+    <div id="red_button"><%= link_to("ban", "/groups/#{@group.id}/ban", :method => :ban)%></div>
   </div>
   <% end %>
-  <% end %>
+  <hr>
+  <div id="red_button"><%= link_to("delete group", "/groups/#{@group.id}/delete")%></div>
 </div>
