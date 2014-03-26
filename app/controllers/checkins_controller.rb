@@ -1,6 +1,6 @@
-class LoginsController < ApplicationController
+class CheckinsController < ApplicationController
 
-  def checkin
+  def create
     @place = Place.find(params[:id])
   
     CheckIn.new({

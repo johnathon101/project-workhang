@@ -1,5 +1,7 @@
 <h1>MY INFO</h1>
 
+<% unless current_user %>
+
   <div id="green_avatar">
     <%= link_to image_tag(@avatar) %>
   </div>  
@@ -45,4 +47,9 @@
   </p>
   
   <%= f.submit "Sign up!"%>
+<% end %>
+
+
+<%= link_to("Delete Profile", user_path(current_user.id), :method => :delete) %>
+
 <% end %>
