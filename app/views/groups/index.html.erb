@@ -19,4 +19,19 @@
   <% end %>
 </div>
 <% end %>
+<% @is_member = Member.where("user_id = ?", current_user.id).where("group_id = ?", group.id) %>
+  <% if current_user.id == group.mod %>
+    <div id="gray_button">
+      <a href="/groups/<%= group.id %>/edit">edit</a>
+    </div>
+  <% elsif @is_member != [] %>
+    <div id="red_button">
+      <%= link_to("leave", "/groups/#{group.id}/leave", :method => :leave) %>
+    </div>
+  <% else %>
+    <div id="green_button">
+      <%= link_to("join", "/groups/#{group.id}/join", :method => :join)%>
+    </div>
+  <% end %>
+  <hr>
 <% end %>

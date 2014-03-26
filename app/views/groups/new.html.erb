@@ -1,0 +1,21 @@
+<h1>CREATE A GROUP</h1>
+<%= form_for @group do |f| %>
+
+  <% if @group.errors.any? %>
+    <% @group.errors.full_messages.each do |error_msg| %>
+      <em><%= error_msg %>!</em>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= f.label "Name:" %>
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label "Description:" %>
+    <%= f.text_area :desc %>
+  </p>
+  
+  <%= f.submit "submit"%>
+<% end %>

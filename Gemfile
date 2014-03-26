@@ -7,6 +7,10 @@ gem 'rails', '3.2.17'
 
 gem 'gravatar-ultimate'
 
+gem 'pry'
+
+gem 'gon'
+
 gem 'pg'
 
 gem 'json'
@@ -21,9 +25,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-
-gem 'gon'
 
 gem 'jquery-rails'
 
