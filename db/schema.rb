@@ -11,8 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+ActiveRecord::Schema.define(:version => 20140325163426) do
 
-ActiveRecord::Schema.define(:version => 20140325000739) do
+  create_table "check_ins", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.datetime "time_out"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -20,6 +27,14 @@ ActiveRecord::Schema.define(:version => 20140325000739) do
     t.integer  "mod"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "moderator_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "places", :force => true do |t|
@@ -53,11 +68,14 @@ ActiveRecord::Schema.define(:version => 20140325000739) do
     t.text     "lname"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "phone_num"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "phone_num",       :limit => 8
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.text     "bio"
     t.text     "projects"
+    t.string   "twitter"
+    t.string   "website"
+    t.boolean  "mentor"
   end
 
 end

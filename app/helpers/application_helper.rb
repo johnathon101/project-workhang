@@ -1,5 +1,9 @@
 module ApplicationHelper
-  # def full_name(fname, lname)
-  #   @full_name = "#{fname.titleize} #{lname.titleize}"
-  # end
+
+  def most_common_value(a)
+    a.group_by do |e|
+      e
+    end.values.max_by(&:size).first   # TODO .first(5)
+  end
+
 end

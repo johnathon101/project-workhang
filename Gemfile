@@ -5,6 +5,8 @@ gem 'rails', '3.2.17'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'gravatar-ultimate'
+
 gem 'pg'
 
 gem 'json'
@@ -20,7 +22,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+
 gem 'gon'
+
+gem 'gravatar-ultimate'
+
 
 gem 'jquery-rails'
 
