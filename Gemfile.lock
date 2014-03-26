@@ -43,6 +43,9 @@ GEM
       dotenv (= 0.10.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    gon (5.0.4)
+      actionpack (>= 2.3.0)
+      json
     gravatar-ultimate (2.0.0)
       activesupport (>= 2.3.14)
       rack
@@ -126,6 +129,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
   dotenv-rails
+  gon
   gravatar-ultimate
   jbuilder
   jquery-rails

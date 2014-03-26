@@ -6,5 +6,8 @@ class User < ActiveRecord::Base
   def full_name
     "#{self.fname.downcase.titleize} #{self.lname.downcase.titleize}"
   end
-
+  
+  has_many :groups, :through => :members
+  has_many :members
+  
 end

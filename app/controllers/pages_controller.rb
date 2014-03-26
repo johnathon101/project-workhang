@@ -4,4 +4,7 @@ class PagesController < ApplicationController
     @user = User.new
   end
   
+  def logout
+    
+  end
 end
