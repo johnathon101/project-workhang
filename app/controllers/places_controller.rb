@@ -36,7 +36,6 @@ class PlacesController < ApplicationController
     #If the location is not a workhangout yet, we cann add it to the DB!
     @place=Place.new
       val_loc=@@globalresults
-      binding.pry
       @place.name = val_loc["results"][choice]["name"]
       format_address=val_loc["results"][choice]["formatted_address"]
       @place.street = format_address
