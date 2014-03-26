@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
     #Assign search query submitted by user, format to remove uncooperative characters
     search_query=(@place.name).downcase.strip.gsub(' ','+')
     #Send search query to google to find the location(Validate Location)
-    val_loc=JSON.load(open("https://maps.googleapis.com/maps/api/place/textsearch/json?key=#{ENV["GOOGLE_API_KEY"]}&location=41.2918589,-96.0812485&radius=50000&query=#{search_query}&sensor=false"))
+    val_loc=JSON.load(open("https://maps.googleapis.com/maps/api/place/textsearch/json?key=#{ENV["GOOGLE_API_KEY"]}&location=41.2918589,-96.0812485&radius=5000&query=#{search_query}&sensor=false"))
     #Find lat/long from hash returned on the JSON request, assign to variables
     if val_loc
       latitude=val_loc["results"][0]["geometry"]["location"]["lat"]
