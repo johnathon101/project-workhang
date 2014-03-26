@@ -15,7 +15,7 @@
       MY TOP FIVE
     </h3>
     
-    <% if current_user %>
+    <% if @user.id == current_user.id %>
       <%= link_to("Edit Profile", edit_user_path(@user.id)) %>
     <% end %>
     

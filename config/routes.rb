@@ -7,6 +7,9 @@ ProjectWorkhang::Application.routes.draw do
   get "/about" => 'pages#about', :as => :about
   # get "/checkout/:id" => 'pages#checkout', :as => :checkout
   get "/logout" => 'pages#logout', :as => :logout
+  
+  get "/checkout" => 'checkins#checkout', :as => :checkout
+  post "/checkout/:id" => 'checkins#create', :as => :checkin
 
   resources :logins
   resources :users
