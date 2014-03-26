@@ -33,7 +33,11 @@ class PlacesController < ApplicationController
       @place.street = format_address
       @place.lng=longitude
       @place.lat=latitude
-      @place.photoref = val_loc["results"][0]["photos"][0]["photo_reference"] || " "
+      if val_loc(["results"][0]["photos"][0]).try(["photo_reference"]) != nil
+          @place.photoref=val_loc["results"][0]["photos"][0]["photo_reference"]
+      else 
+        @place.photoref=""
+      end
       @place.save
       
       redirect_to("/places/#{@place.id}")
@@ -63,7 +67,15 @@ class PlacesController < ApplicationController
   end
   
   def index
-    @places = Place.all
+    if option=-1
+      gon.places=Place.all
+    elsif option==2
+      gon.places=Place.where(:checked_in => true)
+    else
+    #need variable to detect a group location only from user  
+      gon.places=Place.where(:checked_in => true)
+    #@places = Place.all
+    end
   end
   
   def show

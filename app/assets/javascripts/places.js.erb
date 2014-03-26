@@ -1,4 +1,10 @@
+//alert(gon.places);
+// gon.places[i]['lat']
+// gon.places[i]['lng']
+// gon.places[i]['name']
 
+      //End of for loop
+//gon.places is the current var for all places
 
 function initialize() {
   var mapOptions = {
@@ -23,15 +29,34 @@ function initialize() {
           position: google.maps.ControlPosition.LEFT_TOP
           },
           // MAP CONTROLS (END)
-  };
+        };
   
   var myMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  
+  var i=0
+  while (i<gon.places.length) {      
+       var marker = new google.maps.Marker({
+         position: new google.maps.LatLng(gon.places[i]["lat"], gon.places[i]["lng"]), 
+           map: myMap,
+         title: gon.places[i]["name"] 
+         });
+         //info window for each place
+       var infowindow = new google.maps.InfoWindow({
+         content: "This is an info window"
+       });  
+       //on click for info window in the map
+       google.maps.event.addListener(marker, 'click', function() {
+         infowindow.open(myMap, marker)
+       
+       });  
+       i++
+     }
   } 
   // ERB for markers, having to load instance on view, find helper or another method to pass in inst      //var from controller. JSON google api parse in controller method as well to extract information from
 //   hash. Worked in view where @places is defined,  bad juju.
 
-  
-  
+
+
   function loadScript() {
         var script = document.createElement('script');
         script.type = 'text/javascript';
