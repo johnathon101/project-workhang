@@ -7,4 +7,8 @@ class PagesController < ApplicationController
   def logout
     
   end
+  
+  def about
+    
+  end
 end

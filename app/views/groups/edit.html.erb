@@ -1,0 +1,49 @@
+<h1>EDIT GROUP</h1>
+<%= form_for @group do |f| %>
+
+  <% if @group.errors.any? %>
+    <% @group.errors.full_messages.each do |error_msg| %>
+      <em><%= error_msg %>!</em>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= f.label "Name:" %>
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label "Description:" %>
+    <%= f.text_area :desc %>
+  </p>
+  
+  <%= f.submit "update group"%>
+<% end %>
+<% @members = @group.users %>
+<% @members.shift %>
+<% if @members != [] %>
+<h1>OTHER MEMBERS</h1>
+<% end %>
+<div id="members">
+  <% @members.each do |member| %>
+  <% @member_checked_in = true %>
+  <% @email = member.email %>
+  <div id="avatar">
+  <% if @member_checked_in %>
+    <div id="green_avatar">
+      <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
+    </div>
+  <% else %>
+    <div id="gray_avatar">
+      <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
+    </div>
+  </div>
+  <% end %>
+  <div id="name_and_ban">
+    <p><a href="/users/<%= member.id %>"><%= member.fname %> <%= member.lname %></a></p>
+    <div id="red_button"><a href="/groups/<%= @group.id %>/ban?user_id=<%= member.id %>">ban</a></div>
+  </div>
+  <% end %>
+  <hr>
+  <div id="red_button"><%= link_to("delete group", "/groups/#{@group.id}/delete")%></div>
+</div>
