@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     end
     end
     @users = User.where(:id => @user_ids)
-    gon.places=Place.where(:id => @places)
+    @places = Place.where(:id => @places)
   end
   
   def logout

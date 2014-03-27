@@ -1,0 +1,28 @@
+#homepage_desc {
+  float: left;
+  width: 40%;
+  margin-top: 15px;
+  margin-left: 40px;
+}
+
+#signup h2 {
+  margin-bottom: 10px;
+}
+
+.form_inline {
+  display: inline-block;
+}
+
+#signup {
+  float: right;
+  width: 45%;
+}
+
+#signup input[type="submit"] {
+  background: #00957A;
+  color: #ffffff;
+  padding: 5px 14px 5px 14px;
+  font-size: 15px;
+  float: right;
+  margin-right: 50px;
+}

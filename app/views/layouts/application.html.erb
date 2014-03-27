@@ -7,14 +7,17 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript" src="//use.typekit.net/rsb7xmd.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
-<nav>
+<nav class="clearfix">
   <div id="logo">
     <a href="/"><img src="https://s3.amazonaws.com/WorkHang/WorkHangTransparent.png" alt="logo"></a>
   </div>
   
   <% if current_user %>
   
+  <div id="header_middle">
   <div id="nav_links">
     <ul>
       <li><a href="/places">PLACES</a></li>/
@@ -26,8 +29,8 @@
   <% @check_ins = current_user.check_ins.where(time_out: nil) %>
   <% if @check_ins == [] %>
     <form method="post" action="/places/results">
-    <input type="text" name="query" placeholder="Check into a place."><br>
-    <input type="submit" value="Search">
+    <input type="text" name="query" placeholder="Check into a place." id="checkin_search">
+    <input type="submit" value="Search" id="checkin_search">
     </form>
   <% else %>
     <% @place_id = @check_ins.first.place_id %>
@@ -35,6 +38,7 @@
     <div id="check_in_status"><p>I'm at <%= @place.name %>.</p></div>
     <a href="/checkout"><div id="checkout_button">X</div></a>
   <% end %>
+  </div>
   
   <div id="profpic">
   <a href="/users/<%= current_user.id %>"><img src="<%= Gravatar.new("#{current_user.email}").image_url + "?s=75" %>"></a>
@@ -52,23 +56,19 @@
     <%= form_tag logins_path do %>
   
       <p>
-        <%= label_tag :email %>
-        <%= text_field_tag :email %>
-      </p>
+        <%= text_field_tag :email, nil, placeholder: "email" %>
   
-      <p>
-        <%= label_tag :password %>
-        <%= password_field_tag :password %>
-      </p>
+        <%= password_field_tag :password, nil, placeholder: "password" %>
   
       <%= submit_tag "log in" %>
+            </p>
     <% end %>
   </div>
   
   <% end %>
 </nav>
 <body>
-<div id="container">
+<div id="container" class="clearfix">
 <%= yield %>
 </div>
 </body>

@@ -1,27 +1,36 @@
 <% if current_user %>
-<% if @check_ins %>
-<h1>WHERE WE'RE WORKING</h1>
-<div id="map-canvas"></div>
-<h2>CURRENT CHECK-INS</h2>
-<% @users.each do |user|%>
-<% @checks = user.check_ins.where(time_out: nil) %>
-<% @place_id = @checks.first.place_id %>
-<% @place = Place.find(@place_id)%>
-<p><% if user.id != current_user.id %>
-  <% link_to("#{user.fname} #{user.lname}", user_path(user.id)) %> is 
-<% else %>
-You are
-<% end %> at <%= link_to("#{@place.name}", place_path(@place.id))%>. 
-<% if user.id == current_user.id %>
-<a href="/checkout">Click here to check out.</a><% end %></p>
+  <% if @check_ins != [] %>
+    <h1>WHERE WE'RE WORKING</h1>
+      <div id="map-canvas"></div>
+    <h2>CURRENT CHECK-INS</h2>
+      <% @users.each do |user|%>
+        <% @checks = user.check_ins.where(time_out: nil) %>
+        <% @place_id = @checks.first.place_id %>
+        <% @place = Place.find(@place_id)%>
+    <p><% if user.id != current_user.id %>
+      <% link_to("#{user.fname} #{user.lname}", user_path(user.id)) %> is 
+    <% else %>
+    You are
+    <% end %> at <%= link_to("#{@place.name}", place_path(@place.id))%>. </p>
+  <% if user.id == current_user.id %>
+    <a href="/checkout">Click here to check out.</a>
+  <% end %></p>
+  <% end %>
+  <% else %>
+  <h2>Well, shoot. No one is working right now. Not even you.</h2>
+    <p>Be the first to work, and check into a place above.</p>
+    <p>Or <a href="/groups">join more interesting groups</a> to meet more like-minded people.</p>
 <% end %>
 <% else %>
-<h2>Well, shoot. No one is working right now. Not even you.</h2>
-<p>Be the first to work, and check into a place above.</p>
-<p>Or <a href="/groups">join more interesting groups</a> to meet more like-minded people.</p>
-<% end %>
-<% else %>
-<h1>SIGN UP</h1>
+<div id="homepage_desc">
+<h1>Join others who are working remotely or hanging after-hours.</h2>
+<hr>
+<h3><strong>DISCOVER</strong> NEW PLACES.</h3>
+<h3><strong>LEARN</strong> NEW THINGS.</h3>
+<h3><strong>MEET</strong> NEW PEOPLE.</h3>
+</div>
+<div id="signup">
+<h2>SIGN UP</h2>
 
 <%= form_for @user do |f| %>
 
@@ -32,35 +41,29 @@ You are
   <% end %>
 
   <p>
-    <%= f.label "First Name:" %>
-    <%= f.text_field :fname %>
+    <%= f.text_field :fname, :placeholder => "first name", class: 'form_inline' %>
+
+    <%= f.text_field :lname, :placeholder => "last name", class: 'form_inline' %>
   </p>
 
   <p>
-    <%= f.label "Last Name:" %>
-    <%= f.text_field :lname %>
+    <%= f.email_field :email, :placeholder => "Gravatar email", size: 68 %>
   </p>
 
   <p>
-    <%= f.label "Gravatar Email:" %>
-    <%= f.email_field :email %>
+    <%= f.password_field :password, :placeholder => "password", size: 68 %>
   </p>
 
   <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password_confirmation, :placeholder => "re-enter password", size: 68 %>
   </p>
 
-  <p>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </p>
-
-  <p>
+  <!-- <p>
     <%= f.label "Cell Phone Number:" %>
     <%= f.telephone_field :phone_num %>
-  </p>
+  </p> -->
 
   <%= f.submit "sign up"%>
 <% end %>
+</div>
 <% end %>
