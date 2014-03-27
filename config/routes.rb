@@ -3,7 +3,7 @@ ProjectWorkhang::Application.routes.draw do
   get  "/places/new_manual" => 'places#new_manual', :as => :create_manually
   post '/places/new_manual' =>'places#new_manual_save', :as => :new_manual_save
   get "/places/new_review" => 'places#new_review', :as => :new_review
-  post "/places/new_review_save" => 'places#new_review_save,', :as => :new_review_save
+  post "/places/new_review" => 'places#new_review_save', :as => :new_review_save
   
     # get "/checkin/:id" => 'pages#checkin', :as => :checkin
   get "/about" => 'pages#about', :as => :about

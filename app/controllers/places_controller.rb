@@ -1,7 +1,6 @@
 class PlacesController < ApplicationController
   #Create methods to respond to js calls
   respond_to :json, :js
-
   
   @@globalresults=[]
   def new
@@ -110,11 +109,13 @@ class PlacesController < ApplicationController
   end
   
   def new_review_save
-    @place=Place.find_by_id(params[:place_id])
+    @review=Review.new(params[:review])
+    @place=Place.find_by_id(params[:review][:place_id])
     @user=current_user
     @review.user_id=@user.id
-    @review.place_id=@place.ids
+    @review.place_id=@place.id
     @review.save
+    redirect_to("/places/#{@place.id}")
   end
   
 end

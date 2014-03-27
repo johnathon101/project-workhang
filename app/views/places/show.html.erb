@@ -6,12 +6,11 @@
 <p>Google Reference Image:</p>
 <img src= <%= @imgloc %> />
 
-<% if @review 
-  @review.each do |review| %>
+<% if @reviews 
+  @reviews.each do |review| %>
     <h4><%= review.title %></h4>
     <h5><%= review.content %></h5>
-    <% reviewer=User.find_by_id(review.user_id) %>
-    <h5>by: <%= reviewer.name  %></h5>
+
   <% end %>
 <% end %>
 
