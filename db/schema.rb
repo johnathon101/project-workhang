@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140325193146) do
+ActiveRecord::Schema.define(:version => 20140327022046) do
 
   create_table "check_ins", :force => true do |t|
     t.integer  "user_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20140325193146) do
     t.datetime "time_out"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "group_id"
   end
 
   create_table "groups", :force => true do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20140325193146) do
     t.integer  "mod"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "place_id"
   end
 
   create_table "members", :force => true do |t|
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20140325193146) do
     t.float    "lat"
     t.float    "lng"
     t.text     "photoref"
+    t.integer  "group_id"
   end
 
   create_table "reviews", :force => true do |t|

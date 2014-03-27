@@ -1,4 +1,11 @@
-<% unless current_user %>
+<% if current_user %>
+<% if CheckIn.all != [] %>
+<div id="map-canvas"></div>
+<% else %>
+<h2>Well, shoot. No one is working right now. Not even you.</h2>
+<p>Be the first to work, and check into a place above.</p>
+<% end %>
+<% else %>
 <h1>SIGN UP</h1>
 
 <%= form_for @user do |f| %>
@@ -13,38 +20,32 @@
     <%= f.label "First Name:" %>
     <%= f.text_field :fname %>
   </p>
-  
+
   <p>
     <%= f.label "Last Name:" %>
     <%= f.text_field :lname %>
   </p>
-  
+
   <p>
     <%= f.label "Gravatar Email:" %>
     <%= f.email_field :email %>
   </p>
-  
+
   <p>
     <%= f.label :password %>
     <%= f.password_field :password %>
   </p>
-  
+
   <p>
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </p>
-  
+
   <p>
     <%= f.label "Cell Phone Number:" %>
     <%= f.telephone_field :phone_num %>
   </p>
-  
+
   <%= f.submit "sign up"%>
 <% end %>
-<% end %>
-<% if CheckIn.all != [] %>
-<div id="map-canvas"></div>
-<% else %>
-<h2>Well, shoot. No one is working right now. Not even you.</h2>
-<p>Be the first to work, and check into a place above.</p>
 <% end %>

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   end
   
   has_many :groups, :through => :members
+  has_many :places, :through => :check_ins
   has_many :members
   has_many :check_ins
   

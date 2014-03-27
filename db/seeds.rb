@@ -6,17 +6,17 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-
-Group.create(name: "Pro Rubyists Unite", desc: "Group where we make fun of other languages", mod: 1)
-Place.create(name: 'Starbucks', desc: "America's favorite coprorate coffee", street: "100 Broadway", city: "Omaha", zipcode: "68114", user_id: 1);
-Place.create(name: 'Wolhners', desc: "America's favorite coprorate coffee", street: "100 Broadway", city: "Omaha", zipcode: "68114", user_id: 1)
-Place.create(name: 'Caffeine Dreams', desc: "America's favorite coprorate coffee", street: "100 Broadway", city: "Omaha", zipcode: "68114", user_id: 1)
-User.create(fname: "John", lname: "Lueth", email: "ja.lueth@gmail.com", password: "password", password_confirmation: "password")
-User.create(fname: "Yofred", lname: "Moik", email: "ytmoik@gmail.com", password: "password", password_confirmation: "password")
-User.create(fname: "Michael", lname: "Todd", email: "mikejtodd@gmail.com", password: "password", password_confirmation: "password")
-Group.create(name: "Pro Rubyists Unite", desc: "Group where we make fun of other languages")
+User.create(email: 'mikejtodd@gmail.com', fname: 'Michael', lname: 'Todd', password: 'michael')
+User.create(email: 'ytmoik@gmail.com', fname: 'Yofred', lname: 'Moik', password: 'yofred')
+User.create(email: 'ja.lueth@gmail.com', fname: 'John', lname: 'Lueth', password: 'john')
+User.create(email: 'nivram80@gmail.com', fname: 'Todd', lname: 'Nichols', password: 'todd')
+Place.create(name: 'Starbucks', desc: "America's favorite corporate coffee.", street: "219 S 72nd St", city: "Omaha", zipcode: "68114");
+Place.create(name: 'Blue Line Coffee', desc: "Where dreams go to die.", street: "4924 Underwood Ave", city: "Omaha", zipcode: "68132")
+Place.create(name: 'Caffeine Dreams', desc: "Go outside, you dummy.", street: "4524 Farnam St", city: "Omaha", zipcode: "68132")
+Group.create(name: 'John\'s Group', desc: "You know it.", mod: 3)
 Member.create(group_id: 1, user_id: 1)
 Member.create(group_id: 1, user_id: 2)
-Group.create(name: "Solo Ruby", desc: "Group where we sit by ourselves.")
-Member.create(group_id: 2, user_id: 3)
+Member.create(group_id: 1, user_id: 3)
+CheckIn.create(user_id: 1, place_id: 1)
+CheckIn.create(user_id: 2, place_id: 2)
+CheckIn.create(user_id: 3, place_id: 3)
