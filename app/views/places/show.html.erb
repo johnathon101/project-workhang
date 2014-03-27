@@ -2,15 +2,25 @@
 <h1><%= @place.name %></h1>
 <h3><%= @place.street %></h3>
 <br>
-<%= link_to("Been Here? Review This Place!", :make_review(@place.id)) %>
+<%= link_to "Been Here? Review This Place!", new_review_path(:place_id => @place.id) %>
 <p>Google Reference Image:</p>
 <img src= <%= @imgloc %> />
 
-<h4><%= @review.title %></h4>
-<h5><%= @review.content %></h5>
-<% reviewer=User.find_by_id(@review.user_id) %>
-<h5>by: <%= reviewer.name  %></h5>
+<% if @review 
+  @review.each do |review| %>
+    <h4><%= review.title %></h4>
+    <h5><%= review.content %></h5>
+    <% reviewer=User.find_by_id(review.user_id) %>
+    <h5>by: <%= reviewer.name  %></h5>
+  <% end %>
+<% end %>
 
+<% if @check_ins %>
+  <% @check_ins.each do |working| %>
+    <%= @avatar = Gravatar.new(working.email).image_url + "?s=200" %>
+    <%= working.name %>
+  <% end %>
+<% end %>
 
 <% if @check_ins == [] %>
   <%= link_to("Check in!", checkin_path(@place.id), :method => :post) %>

@@ -100,12 +100,13 @@ class PlacesController < ApplicationController
     @place = Place.find_by_id(params[:id])
     @imgloc="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@place.photoref}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"
     @user = current_user
-    @check_ins = current_user.check_ins.where(time_out: nil && place_id == @place.id)
+    #@check_ins = current_user.check_ins.where(time_out: nil && place_id == @place.id)
     @reviews=Review.where(:place_id => @place.id)
   end
   
   def new_review
     @review=Review.new
+    @place=Place.find_by_id(params[:place_id])
   end
   
   def new_review_save
