@@ -1,4 +1,19 @@
-<% unless current_user %>
+<% if current_user %>
+<% if CheckIn.all != [] %>
+<h1>WHERE WE'RE WORKING</h1>
+<div id="map-canvas"></div>
+<h2>CURRENT CHECK-INS</h2>
+<% @users.each do |user|%>
+<% @checks = user.check_ins.where(time_out: nil) %>
+<% @place_id = @checks.first.place_id %>
+<% @place = Place.find(@place_id)%>
+<p><%= link_to("#{user.fname} #{user.lname}", user_path(user.id))%> is at <%= link_to("#{@place.name}", place_path(@place.id))%>.</p>
+<% end %>
+<% else %>
+<h2>Well, shoot. No one is working right now. Not even you.</h2>
+<p>Be the first to work, and check into a place above.</p>
+<% end %>
+<% else %>
 <h1>SIGN UP</h1>
 
 <%= form_for @user do |f| %>
@@ -13,38 +28,32 @@
     <%= f.label "First Name:" %>
     <%= f.text_field :fname %>
   </p>
-  
+
   <p>
     <%= f.label "Last Name:" %>
     <%= f.text_field :lname %>
   </p>
-  
+
   <p>
     <%= f.label "Gravatar Email:" %>
     <%= f.email_field :email %>
   </p>
-  
+
   <p>
     <%= f.label :password %>
     <%= f.password_field :password %>
   </p>
-  
+
   <p>
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </p>
-  
+
   <p>
     <%= f.label "Cell Phone Number:" %>
     <%= f.telephone_field :phone_num %>
   </p>
-  
+
   <%= f.submit "sign up"%>
 <% end %>
-<% end %>
-<% if CheckIn.all != [] %>
-<p>There are check ins.</p>
-<% else %>
-<h2>Well, shoot. No one is working right now. Not even you.</h2>
-<p>Be the first to work, and check into a place above.</p>
 <% end %>
