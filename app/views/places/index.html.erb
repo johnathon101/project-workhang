@@ -2,8 +2,12 @@
 <div id="map-canvas"></div>
 <!--<%=  @places=Place.all %> -->
 <div id="search_place">
-<form method="post" action="/places/results">
-<h3>Don't See Your Place? Add It Here:</h3><input type="text" name="query"><br>
-<input type="submit" value="Search">
-</form>
+
+<%= form_tag "/places/results" do %>
+  <h3>Don't See Your Place? Add It Here:</h3><input type="text" name="query"><br>
+<% end %>
+
 </div>
+<!-- > <%#= link_to("Don't see your place, add it here", place_path(@place.id)) %> -->
+
+<!-- > <%#= link_to("Don't see your place, add it here", "/places/results/") %> -->

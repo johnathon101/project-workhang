@@ -1,6 +1,6 @@
-<h1>MY INFO</h1>
+<h1><%= @user.fname.upcase %>'S INFO</h1>
 
-<% unless current_user %>
+<% if current_user %>
 
   <div id="green_avatar">
     <%= link_to image_tag(@avatar) %>
@@ -13,11 +13,6 @@
       <em><%= error_msg %>!</em>
     <% end %>
   <% end %>
-  
-  <p>
-    <%= f.label "If you do not have gravatar and would like to provide your own" %>
-    <%= f.label "upload -PLACEHOLDER-" %>
-  </p>
 
   <p>
     <%= f.label "bio:" %>
@@ -47,8 +42,11 @@
   </p>
   
   <%= f.submit "Sign up!"%>
+  
+  
 <% end %>
-
+<% else %>
+  "You are not allowed to access this account"
 
 <%= link_to("Delete Profile", user_path(current_user.id), :method => :delete) %>
 

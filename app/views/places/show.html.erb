@@ -2,7 +2,7 @@
 <h1><%= @place.name %></h1>
 <h3><%= @place.street %></h3>
 <br>
-<%= link_to "Been Here? Review This Place!", new_review_path(:place_id => @place.id) %>
+<%= link_to "Been Here? Review This Place!", new_review_path(@place.id) %>
 <p>Google Reference Image:</p>
 <img src= <%= @imgloc %> />
 
@@ -14,9 +14,9 @@
   <% end %>
 <% end %>
 
-<% if @check_ins %>
-  <% @check_ins.each do |working| %>
-    <%= @avatar = Gravatar.new(working.email).image_url + "?s=200" %>
+<% if @present_people %>
+  <% @present_people.each do |working| %>
+    <%= Gravatar.new(working.email).image_url + "?s=200" %>
     <%= working.name %>
   <% end %>
 <% end %>

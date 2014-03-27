@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  before_filter :show_session_user
+  
   def layout
     if current_user
     @layout = "logged_in"
@@ -17,7 +19,7 @@ class ApplicationController < ActionController::Base
       end
     end
   
-    private
+
   
     # Return either `nil` or a User object.
     def current_user
@@ -26,4 +28,8 @@ class ApplicationController < ActionController::Base
       end
     end
     helper_method :current_user
+    
+    def show_session_user
+      puts "\n\n\n-------------- #{session[:user_id]} ------------\n\n\n"
+    end
 end
