@@ -24,8 +24,8 @@ class PlacesController < ApplicationController
   
   def check_db
     val_loc=@@globalresults
-    lat=params[:lat].gsub("^",".").to_f
-    lng=params[:lng].gsub("^",".").to_f
+    lat=params[:lat].gsub("e",".").to_f
+    lng=params[:lng].gsub("e",".").to_f
     choice=params[:pos].to_i
    
     @check_db=Place.where({:lat=>lat, :lng=>lng}).first
@@ -36,7 +36,6 @@ class PlacesController < ApplicationController
     #If the location is not a workhangout yet, we cann add it to the DB!
     @place=Place.new
       val_loc=@@globalresults
-      binding.pry
       @place.name = val_loc["results"][choice]["name"]
       format_address=val_loc["results"][choice]["formatted_address"]
       @place.street = format_address
@@ -104,15 +103,17 @@ class PlacesController < ApplicationController
      #Get user address from form and format to send off for geocode
      unknown_address=("'#{@place.street}'+'#{@place.city}'+'#{@place.zipcode}'").strip.gsub(' ','+')
      #Send information to google for geocode, need lat/lng to place marker, user owns address
-     unknown_loc=JSON.load(open("http://maps.googleapis.com/maps/api/geocode/json?address=#{unknown_address}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"))
+     unknown_loc=JSON.load(open("https://maps.googleapis.com/maps/api/geocode/json?address=#{unknown_address}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"))
+     binding.pry
      #Get latitude and longitude from JSON string
-     latitude=unknown_loc["results"][0]["geometry"]["location"]["lat"]
-     longitude=unknown_loc["results"][0]["geometry"]["location"]["lng"]
+     latitude=unknown_loc["results"][0]["geometry"]["location"]["lat"]#unknown_loc["results"][0]["geometry"]["location"]["lat"]
+     longitude=unknown_loc["results"][0]["geometry"]["location"]["lng"]#unknown_loc["results"][0]["geometry"]["location"]["lng"]
      #Assign latitude and longitude to place variables
      @place.lat=latitude
      @place.lng=longitude        
      #Save user created location to DB with geocode from google for lat/lng
      @place.save
+     redirect_to("/places/#{@place.id}")
   end
   
   def index

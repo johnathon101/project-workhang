@@ -3,8 +3,8 @@
 <% @val_loc["results"].each do |place| %>
  <% lat = place["geometry"]["location"]["lat"]%>
  <% lng = place["geometry"]["location"]["lng"] %>
- <% f=lat.to_s.gsub(".","^") %>
- <% g=lng.to_s.gsub(".","^") %>
+ <% f=lat.to_s.gsub(".","e") %>
+ <% g=lng.to_s.gsub(".","e") %>
  <%= link_to(place["name"], "/places/check_db/#{f}/#{g}/#{i}") %>
   <%=  place["formatted_address"] %>
   <% i+=1 %><br>
