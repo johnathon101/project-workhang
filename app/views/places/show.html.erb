@@ -16,8 +16,8 @@
 
 <% if @present_people %>
   <% @present_people.each do |working| %>
-    <%= Gravatar.new(working.email).image_url + "?s=200" %>
-    <%= working.name %>
+    <img src="<%= Gravatar.new("#{working.email}").image_url + "?s=75" %>">
+    <%= working.fname %> <%= working.lname %>
   <% end %>
 <% end %>
 
