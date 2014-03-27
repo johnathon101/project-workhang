@@ -1,0 +1,23 @@
+<p>REVIEW : <%= @place.name.upcase %></p>
+
+    <%= form_for @review, :url => {:action => 'new_review_save'} do |r| %>
+      <% if @review.errors.any? %>
+        <%@review.errors.full_messages.each do |error_msg| %>
+          <p><%= error_msg %></p>
+        <% end %>
+      <% end %>
+  
+  <p>
+    <%= r.label :title %>
+    <%= r.text_field :title %>
+  </p>
+  
+  <p>
+    <%= r.label :content %>
+    <%= r.text_field :content %>
+  </p>
+  
+
+    <%= r.submit %>
+<% end %>
+ 
