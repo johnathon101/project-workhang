@@ -27,11 +27,10 @@
   </div>
   
   <% @check_ins = current_user.check_ins.where(time_out: nil) %>
-  <% if @check_ins == [] %>
-    <form method="post" action="/places/results">
-    <input type="text" name="query" placeholder="Check into a place." id="checkin_search">
-    <input type="submit" value="Search" id="checkin_search">
-    </form>
+  <% if @check_ins == [] %>   
+    <%= form_tag "/places/results" do %>
+    <input type="text" name="query" placeholder="Check into a place." id="checkin_search"><br>
+    <% end %>
   <% else %>
     <% @place_id = @check_ins.first.place_id %>
     <% @place = Place.find(@place_id)%>
