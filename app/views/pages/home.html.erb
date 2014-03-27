@@ -1,6 +1,14 @@
 <% if current_user %>
 <% if CheckIn.all != [] %>
+<h1>WHERE WE'RE WORKING</h1>
 <div id="map-canvas"></div>
+<h2>CURRENT CHECK-INS</h2>
+<% @users.each do |user|%>
+<% @checks = user.check_ins.where(time_out: nil) %>
+<% @place_id = @checks.first.place_id %>
+<% @place = Place.find(@place_id)%>
+<p><%= link_to("#{user.fname} #{user.lname}", user_path(user.id))%> is at <%= link_to("#{@place.name}", place_path(@place.id))%>.</p>
+<% end %>
 <% else %>
 <h2>Well, shoot. No one is working right now. Not even you.</h2>
 <p>Be the first to work, and check into a place above.</p>
