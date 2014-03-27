@@ -5,7 +5,8 @@ class CheckinsController < ApplicationController
   
     CheckIn.create({
       :place_id => @place.id, 
-      :user_id => current_user.id
+      :user_id => current_user.id,
+      :time_in => Time.now
     })
     
     redirect_to(place_path(@place.id))
@@ -21,7 +22,7 @@ class CheckinsController < ApplicationController
     #   
     # redirect_to(:root)
             
-    current_user.check_ins.where({ :time_out => nil }).update_attributes({
+    current_user.check_ins.where(time_out: nil).first.update_attributes({
       :time_out => Time.now
     })
   

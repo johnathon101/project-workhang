@@ -32,8 +32,9 @@
   <% else %>
     <% @place_id = @check_ins.first.place_id %>
     <% @place = Place.find(@place_id)%>
-    <div id="check_in_status"><p>I'm at <%= @place.name %>.</p>
-  <% end %></div><a href="/checkout"><div id="checkout_button">X</div></a>
+    <div id="check_in_status"><p>I'm at <%= @place.name %>.</p></div>
+    <a href="/checkout"><div id="checkout_button">X</div></a>
+  <% end %>
   
   <div id="profpic">
   <a href="/users/<%= current_user.id %>"><img src="<%= Gravatar.new("#{current_user.email}").image_url + "?s=75" %>"></a>

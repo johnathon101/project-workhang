@@ -123,6 +123,7 @@ class PlacesController < ApplicationController
     @created_place=Place.find_by_id(id)
     @created_place.name
   end
+
   #Return an array of objects where users are checked in currently, will run an each on to create js markers for google map(helper?)
   def deliver_checked_in
     @checked_in=Place.where(:occupied => true)
