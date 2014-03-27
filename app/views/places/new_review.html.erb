@@ -1,6 +1,8 @@
+<%= binding.pry %>
+<% @place=Place.find(params["format"]) %>
 <p>REVIEW : <%= @place.name.upcase %></p>
 
-    <%= form_for [@review, @place], :url => {:action => 'new_review'} do |r| %>
+    <%= form_for @review, :url => {:action => 'new_review'} do |r| %>
       <% if @review.errors.any? %>
         <%@review.errors.full_messages.each do |error_msg| %>
           <p><%= error_msg %></p>
