@@ -51,7 +51,7 @@ function initialize() {
       };
       //window.a[i]=window.a[i].concat("' <IMG BORDER='0' ALIGN='Left' SRC='"+ window.memberHere[n] + "'> '")
     };
-                     
+                    
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(gon.places[i]["lat"], gon.places[i]["lng"]), 
       map: myMap,
@@ -61,7 +61,7 @@ function initialize() {
     (function(marker, i){
       google.maps.event.addListener(marker, 'click', function() {
         infowindow = new google.maps.InfoWindow({
-          content: (gon.places[i]["name"]).link("/places/"+(i+1)) + "<br>" + window.a[i]
+          content: (  (gon.places[i]["name"]).link("/places/"+(i+1)) + window.a[i])
 
           //contentstring
         });  
@@ -70,7 +70,7 @@ function initialize() {
       });
     })(marker,i);
     i++
-         
+        
   }
 }
 
@@ -85,7 +85,7 @@ function initialize() {
             'callback=initialize';
         document.body.appendChild(script);
       }  
-//This is for a place search to get latlong and business name, implement once markers work on       //javascript. Took from google place api. Will need to conform to place syntax to get all information
+//This is for a place search to get latlong and business name, implement once markers work on      //javascript. Took from google place api. Will need to conform to place syntax to get all information
 //desired in the hash. The above does not produce a user name. Worst case it is user dependent until
 //AJAX and JSON is configured correctly with returning information to the database. The api query to
 //places in JSON can be parsed in a method and implemented along side this more general information
@@ -95,16 +95,16 @@ function initialize() {
   // var service = new google.maps.places.PlacesService(map);
   // 
   // service.getDetails(request, function(place, status) {
-  //   if (status == google.maps.places.PlacesServiceStatus.OK) {
-  //     var marker = new google.maps.Marker({
-  //       map: map,
-  //       position: place.geometry.location
-  //     });
-  //     google.maps.event.addListener(marker, 'click', function() {
-  //       infowindow.setContent(place.name);
-  //       infowindow.open(map, this);
-  //     });
-  //   }
+  //  if (status == google.maps.places.PlacesServiceStatus.OK) {
+  //    var marker = new google.maps.Marker({
+  //      map: map,
+  //      position: place.geometry.location
+  //    });
+  //    google.maps.event.addListener(marker, 'click', function() {
+  //      infowindow.setContent(http://place.name);
+  //      infowindow.open(map, this);
+  //    });
+  //  }
   // });
 
 

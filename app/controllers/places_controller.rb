@@ -72,7 +72,7 @@ class PlacesController < ApplicationController
      #Get user address from form and format to send off for geocode
      unknown_address=("'#{@place.street}'+'#{@place.city}'+'#{@place.zipcode}'").strip.gsub(' ','+')
      #Send information to google for geocode, need lat/lng to place marker, user owns address
-     unknown_loc=JSON.load(open("https://maps.googleapis.com/maps/api/geocode/json?address='#{unknown_address}'&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"))
+     unknown_loc=JSON.load(open("http://maps.googleapis.com/maps/api/geocode/json?address=#{unknown_address}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"))
      #Get latitude and longitude from JSON string
      latitude=unknown_loc["results"][0]["geometry"]["location"]["lat"]
      longitude=unknown_loc["results"][0]["geometry"]["location"]["lng"]
@@ -113,7 +113,6 @@ class PlacesController < ApplicationController
     else
        @present_people=[]
     end 
-    @user_checkins=CheckIn.where(:user_id => @user.id, :time_out => nil)
     @check_ins=CheckIn.where(:user_id => @user.id, :place_id => @place.id, :time_out => nil)
   end
   

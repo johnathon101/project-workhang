@@ -15,7 +15,7 @@ class PagesController < ApplicationController
         @new_check << a
       end
     end
-    @check_ins = @check_ins.where(time_out: nil)
+    @check_ins = @new_check
     @places = []
     @user_ids = []
     @times = []
