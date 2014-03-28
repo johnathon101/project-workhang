@@ -5,7 +5,6 @@
 
       //End of for loop
 //gon.places is the current var for all places
-
 function initialize() {
   var mapOptions = {
     zoom: 11,
@@ -14,67 +13,68 @@ function initialize() {
     mapTypeControl:true,
     //
     panControl: true,
-          panControlOptions: {
-          position: google.maps.ControlPosition.TOP_RIGHT
-          },
+    panControlOptions: {
+      position: google.maps.ControlPosition.TOP_RIGHT
+    },
 
     zoomControl: true,
-          zoomControlOptions: {
-          style: google.maps.ZoomControlStyle.LARGE,
-          position: google.maps.ControlPosition.LEFT_TOP
-          },
+    zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.LARGE,
+      position: google.maps.ControlPosition.LEFT_TOP
+    },
 
     streetViewControl: true,
-          streetViewControlOptions: {
-          position: google.maps.ControlPosition.LEFT_TOP
-          },
-          // MAP CONTROLS (END)
-        };
+    streetViewControlOptions: {
+      position: google.maps.ControlPosition.LEFT_TOP
+    },
+    // MAP CONTROLS (END)
+  };
   
   var myMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  //var marker =[];
-  //var infowindow=[];
+  window.a= [];  
+  var p = 0;
+  var people = gon.group_people.length
+  window.memberHere = [];
+  var contentstring = "";
+  var tryarray=[];
+  
+  for(i=0; i<gon.places.length; i++) {      
 
-  var p=0
-  var i=0
-  var contentstring=""
-  var check_peeps = gon.group_people.length
-  while (i<gon.places.length) {      
-    
-    p=0;
-    for(x=0; x<check_peeps; x++){
-     if (gon.group_people[p][1] == gon.places[i]["id"] ) {
-      var contentstring = contentstring + ' <IMG BORDER="0" ALIGN="Left" SRC='+ gon.group_people[p][0] + '> '
+  
+
+  
+    window.a[i]=""
+    for(n=0; n<people; n++){ 
+      if (gon.group_people[n][1] == gon.places[i]["id"]){
+        //window.memberHere.push(gon.group_people[n][0])
+        window.a[i]=window.a[i].concat("' <IMG BORDER='0' ALIGN='Left' SRC='"+ gon.group_people[n][0] + "'> '")
+      };
+      //window.a[i]=window.a[i].concat("' <IMG BORDER='0' ALIGN='Left' SRC='"+ window.memberHere[n] + "'> '")
+    };
+                     
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(gon.places[i]["lat"], gon.places[i]["lng"]), 
+      map: myMap,
+      title: gon.places[i]["name"] 
+    });
+    //info window for each place
+    (function(marker, i){
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow = new google.maps.InfoWindow({
+          content: (gon.places[i]["name"]).link("/places/"+(i+1)) + window.a[i]
+
+          //contentstring
+        });  
+        infowindow.open(myMap,marker);
       
-      } 
-      p++
-    }
-      var marker = new google.maps.Marker({
-         position: new google.maps.LatLng(gon.places[i]["lat"], gon.places[i]["lng"]), 
-           map: myMap,
-         title: gon.places[i]["name"] 
-         });
-         //info window for each place
-         (function(marker, i){
-           google.maps.event.addListener(marker, 'click', function() {
-             infowindow = new google.maps.InfoWindow({
-               content: (gon.places[i]["name"]).link("/places/"+(i+1)) + contentstring
-             });
-             infowindow.open(myMap,marker);
+      });
+    })(marker,i);
+    i++
          
-           });
-         })(marker,i);
-         i++
-       
-       }
+  }
 }
-       
-      // });  
-      // i++
-    // }
-  //} 
-  // ERB for markers, having to load instance on view, find helper or another method to pass in inst      //var from controller. JSON google api parse in controller method as well to extract information from
-//   hash. Worked in view where @places is defined,  bad juju.
+
+//_________________________________________________________ LOAD THE INIT___________________________________________________
 
 
 

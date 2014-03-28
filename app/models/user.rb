@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   
   attr_accessible :email, :fname, :lname, :password, :password_confirmation, :phone_num, :twitter, :website, :projects, :mentor, :bio
   
-  validates :fname, :lname, :email, :presence => true
-  validates :email, :uniqueness => true
-  validates :phone_num, :length => { :is => 10 }
+  # validates :fname, :lname, :email, :presence => true
+  # validates :email, :uniqueness => true
+  # validates :phone_num, :length => { :is => 10 }
   
   def full_name
     "#{self.fname.downcase.titleize} #{self.lname.downcase.titleize}"
