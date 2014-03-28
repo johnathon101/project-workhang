@@ -12,7 +12,7 @@ ProjectWorkhang::Application.routes.draw do
   get "/groups/:id/delete" => 'groups#delete_confirm', :as => :delete_confirm
   get "/groups/:id/ban" => 'groups#ban_confirm', :as => :ban_confirm
   post "/places/results" => "places#results"
-  get "/places/check_db/:lng/:lat/:pos" => "places#check_db"
+  get "/places/check_db/:lat/:lng/:pos" => "places#check_db"
   
   get "/checkout" => 'checkins#checkout', :as => :checkout
   post "/checkout/:id" => 'checkins#create', :as => :checkin

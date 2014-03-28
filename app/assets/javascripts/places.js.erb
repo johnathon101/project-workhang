@@ -34,15 +34,21 @@ function initialize() {
   var myMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   //var marker =[];
   //var infowindow=[];
-  
+
+  var p=0
   var i=0
+  var contentstring=""
+  var check_peeps = gon.group_people.length
   while (i<gon.places.length) {      
     
-     if (gon.group_people[1] == gon.places[i]["id"] ) {
-      var contentstring = '<IMG BORDER="0" ALIGN="Left" SRC='+ gon.people[0] + '>' 
-      } else {
-        var contentstring=''
-      }
+    p=0;
+    for(x=0; x<check_peeps; x++){
+     if (gon.group_people[p][1] == gon.places[i]["id"] ) {
+      var contentstring = contentstring + ' <IMG BORDER="0" ALIGN="Left" SRC='+ gon.group_people[p][0] + '> '
+      
+      } 
+      p++
+    }
       var marker = new google.maps.Marker({
          position: new google.maps.LatLng(gon.places[i]["lat"], gon.places[i]["lng"]), 
            map: myMap,
@@ -55,9 +61,11 @@ function initialize() {
                content: (gon.places[i]["name"]).link("/places/"+(i+1)) + contentstring
              });
              infowindow.open(myMap,marker);
+         
            });
          })(marker,i);
          i++
+       
        }
 }
        
