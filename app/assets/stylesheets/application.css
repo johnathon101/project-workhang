@@ -28,7 +28,7 @@ nav {
   margin-left: auto;
   margin-right: auto;
   height: 120px;
-  width: 880px;
+  width: 800px;
 }
 
 footer {
@@ -59,13 +59,22 @@ input {
 
 #check_in_status {
   background: #C0C0C0;
-  padding: 0px 4px 6px 14px;
+  padding: 0px 3px 6px 15px;
   overflow: hidden;
-  width: 220px;
-  margin-left: 37px;
+  width: 202px;
+  margin-left: 51px;
   float: left;
   display: inline;
   height: 21px;
+}
+
+p a {
+  color: #00957A;
+}
+
+#about_admin {
+  display: inline-block;
+  margin-right: 10px;
 }
 
 #checkout {
@@ -114,13 +123,21 @@ input {
   float: left;
   margin-top: 20px;
   margin-right: 26px;
-  margin-left: 64px;
 }
 
 #nav_links li a {
   font-family: "futura-pt";
   color: #ffffff;
   text-decoration: none;
+}
+
+#logout {
+  text-align: center;
+}
+
+#logout #green_button {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #nav_links li {

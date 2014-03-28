@@ -13,10 +13,10 @@
       <em><%= error_msg %>!</em>
     <% end %>
   <% end %>
-
+  
   <p>
-    <%= f.label "cell phone number:" %>
-    <%= f.telephone_field :phone_num, :size => 24, :rows => 10 %>
+    <%= f.label "cell phone number (10 digits, no spaces or dashes):" %><br><br>
+    <%= f.telephone_field :phone_num, :size => 30 %>
   </p>
 
   <p>
