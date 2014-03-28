@@ -3,12 +3,17 @@ class PagesController < ApplicationController
     @user = User.new
     if current_user && current_user.groups != []
     groups = current_user.groups
-    @check_ins = []
+    @check_ins = Array.new
     groups.each do |group|
       check_in = group.check_ins
       @check_ins << check_in
     end
-    @check_ins = @check_ins.first
+    i = 0
+    @check_ins.each do |checkin|
+      checkin[i].concat checkin[i + 1]
+      i += 1
+    end
+    binding.pry
     @new_check = []
     @check_ins.each do |a|
       if a["time_out"]==nil
