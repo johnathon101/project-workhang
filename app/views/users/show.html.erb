@@ -13,9 +13,6 @@
   </div>
   <% end %>
   
-
-  <div id="leftcol_profile">
-  
   
   <% if current_user != nil && @user.id == current_user.id %>
       <p><%= link_to("Edit profile", edit_user_path(@user.id)) %></p>
