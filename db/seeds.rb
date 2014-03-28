@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(email: 'mikejtodd@gmail.com', fname: 'Michael', lname: 'Todd', password: 'michael')
-User.create(email: 'ytmoik@gmail.com', fname: 'Yofred', lname: 'Moik', password: 'yofred', phone_num: 4025258220)
+User.create(email: 'ytmoik@gmail.com', fname: 'Yofred', lname: 'Moik', password: 'yofred', phone_num: 4023219124)
 User.create(email: 'ja.lueth@gmail.com', fname: 'John', lname: 'Lueth', password: 'john')
 User.create(email: 'nivram80@gmail.com', fname: 'Todd', lname: 'Nichols', password: 'todd')
 Place.create(name: 'Starbucks', lat: 41.258314, lng: -96.023587, desc: "America's favorite corporate coffee.", street: "219 S 72nd St", city: "Omaha", zipcode: "68114");
@@ -20,3 +20,31 @@ Member.create(group_id: 1, user_id: 3)
 CheckIn.create(user_id: 1, place_id: 1, time_in: Time.now)
 CheckIn.create(user_id: 2, place_id: 2, time_in: Time.now)
 CheckIn.create(user_id: 3, place_id: 3, time_in: Time.now)
+
+
+
+
+Place.create(name: 'Walmart', desc: "America's favorite boutique shop.", lat: 42.258020, lng: -98.982510, street: "4526 Farnam St", city: "Omaha", zipcode: "68132")
+Place.create(name: 'Exxon', desc: "Go get more oil, you dummy", lat: 43.258020, lng: -91.982510, street: "4525 Farnam St", city: "Omaha", zipcode: "68132")
+
+CheckIn.create(user_id: 2, place_id: 1, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 1, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 1, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 2, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 2, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 3, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 3, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 3, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 3, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 4, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 4, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 4, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 4, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 4, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 4, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 4, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 5, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 5, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 5, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 5, time_in: Time.now)
+CheckIn.create(user_id: 2, place_id: 5, time_in: Time.now)

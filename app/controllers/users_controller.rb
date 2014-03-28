@@ -57,12 +57,14 @@ class UsersController < ApplicationController
           @client.account.messages.create(
             :from => ENV["TWILIO_NUMBER"],
             :to => ("+1" + @user.phone_num.to_s),
-            # :to => +14023219124,
-            :body => params[:text]
+            # :to => +14023219124, #john
+            :body => "text from #{@user.fname} #{@user.lname}: #{params[:text]}"
           )
     
           #caras number: 4025258220
-    
+          #johns number: 4023219124
+          #kaits number: 4022167901
+          
     redirect_to(user_path(@user.id))
   end
 
