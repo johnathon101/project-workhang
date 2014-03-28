@@ -13,6 +13,10 @@
   </div>
   <% end %>
   
+
+  <div id="leftcol_profile">
+  
+  
   <% if current_user != nil && @user.id == current_user.id %>
       <p><%= link_to("Edit profile", edit_user_path(@user.id)) %></p>
   <% end %>
@@ -29,12 +33,21 @@
     <p><a href="http://<%= @user.website %>" target="_blank"><%= @user.website %></a></p>
   </div>
     
-<!--     <h3>
+    <!-- <h3>
       MY TOP FIVE
-    </h3> -->
+    </h3>
+    <% if @fav_places == nil %>
+      <p><%= @user.fname %> has yet to check in!</p>
+    <% else %>
+      <% @fav_places.each do |places| %>
+      <ul>
+        <li><%= places.name %></li>
+      </ul>
+      <% end %>
+    <% end %> -->
+
     
   </div>
-  
 </div>
 
 <div id="rightcol_profile">
@@ -56,7 +69,7 @@
         <%= submit_tag "send text" %>
       <% end %>
       
-  <% end %>
+  <% end %>  
   
   </div>
   
@@ -70,6 +83,14 @@
   <p><%= @user.projects %></p>
   <% end %>
   
-  <!-- <h2>RECENT CHECK-INS</h2> -->
+
+  <!-- <h2>RECENT CHECK-INS</h2>
+  <% if @recent_places %>
+    <% @recent_places.each do |places| %>
+      <li><%= link_to(places.name, place_path(places.id)) %></li>
+    <% end %>
+  <% else %>
+    <p><%= @user.fname %> has not checked in.</p>
+  <% end %> -->
 </div>
-</div>
+
