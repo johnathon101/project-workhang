@@ -3,24 +3,19 @@ class PagesController < ApplicationController
     @user = User.new
     if current_user && current_user.groups != []
     groups = current_user.groups
-    @check_ins = Array.new
+    @check_ins = []
     groups.each do |group|
       check_in = group.check_ins
       @check_ins << check_in
     end
-    i = 0
-    @check_ins.each do |checkin|
-      checkin[i].concat checkin[i + 1]
-      i += 1
-    end
-    binding.pry
+    @check_ins = @check_ins.first
     @new_check = []
     @check_ins.each do |a|
       if a["time_out"]==nil
         @new_check << a
       end
     end
-    @check_ins = @new_check
+    @check_ins = @check_ins.where(time_out: nil)
     @places = []
     @user_ids = []
     @times = []
