@@ -8,18 +8,17 @@
         <% @place_id = @checks.first.place_id %>
         <% @place = Place.find(@place_id)%>
     <p><% if user.id != current_user.id %>
-      <% link_to("#{user.fname} #{user.lname}", user_path(user.id)) %> is 
+      <%= link_to("#{user.fname} #{user.lname}", user_path(user.id)) %> is 
     <% else %>
     You are
-    <% end %> at <%= link_to("#{@place.name}", place_path(@place.id))%>. </p>
-  <% if user.id == current_user.id %>
+    <% end %> at <%= link_to("#{@place.name}", place_path(@place.id))%>. <% if user.id == current_user.id %>
     <a href="/checkout">Click here to check out.</a>
-  <% end %></p>
+  <% end %></p></p>
   <% end %>
   <% else %>
   <h2>Well, shoot. No one is working right now. Not even you.</h2>
     <p>Be the first to work, and check into a place above.</p>
-    <p>Or <a href="/groups">join more interesting groups</a> to meet more like-minded people.</p>
+    <p>Or <a href="/groups">join more groups</a> to meet more like-minded people.</p>
 <% end %>
 <% else %>
 <div id="homepage_desc">
