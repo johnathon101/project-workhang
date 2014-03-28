@@ -21,10 +21,12 @@
   <% end %>
 <% end %>
 
-<% if @check_ins == [] %>
-  <%= link_to("Check in!", checkin_path(@place.id), :method => :post) %>
+<% if @check_ins !=[]%>
+    <%= binding.pry %>
+    <%= link_to("Check out!", :checkout, :method => :get) %>
 <% else %>
-  <%= link_to("Check out!", :checkout, :method => :get) %>
+
+  <%= link_to("Check in!", checkin_path(@place.id), :method => :post) %>
 <% end %>
 
 

@@ -25,6 +25,7 @@ class PagesController < ApplicationController
     @users = User.where(:id => @user_ids)
     @places = Place.where(:id => @places)
     gon.places = @places
+    gon.people = @users
   end
   
   def logout

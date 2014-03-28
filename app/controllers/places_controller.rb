@@ -114,7 +114,10 @@ class PlacesController < ApplicationController
     else
        @present_people=[]
     end 
+    @check_ins=CheckIn.where(:user_id => @user.id, :place_id => @place.id, :time_out => nil)
   end
+  
+  
   
   #Return correctly formatted string of coordinates for locations in db by passing in id
   def deliver_coordinates(id)
