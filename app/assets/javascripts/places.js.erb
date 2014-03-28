@@ -47,7 +47,7 @@ function initialize() {
     for(n=0; n<people; n++){ 
       if (gon.group_people[n][1] == gon.places[i]["id"]){
         //window.memberHere.push(gon.group_people[n][0])
-        window.a[i]=window.a[i].concat("' <IMG BORDER='0' ALIGN='Left' SRC='"+ gon.group_people[n][0] + "'> '")
+        window.a[i]=window.a[i].concat(" <IMG BORDER='0' ALIGN='Left' SRC='"+ gon.group_people[n][0] + "'> ")
       };
       //window.a[i]=window.a[i].concat("' <IMG BORDER='0' ALIGN='Left' SRC='"+ window.memberHere[n] + "'> '")
     };
@@ -61,7 +61,7 @@ function initialize() {
     (function(marker, i){
       google.maps.event.addListener(marker, 'click', function() {
         infowindow = new google.maps.InfoWindow({
-          content: (gon.places[i]["name"]).link("/places/"+(i+1)) + window.a[i]
+          content: (gon.places[i]["name"]).link("/places/"+(i+1)) + "<br>" + window.a[i]
 
           //contentstring
         });  

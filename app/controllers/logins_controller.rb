@@ -9,7 +9,7 @@ class LoginsController < ApplicationController
       session[:user_id] = user.id # <-- That is what a "log in" is.
       redirect_to :root
     else
-      raise "Login failed. Try logging in again."
+      redirect_to :root
     end
   end
   

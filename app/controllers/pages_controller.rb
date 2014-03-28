@@ -9,7 +9,13 @@ class PagesController < ApplicationController
       @check_ins << check_in
     end
     @check_ins = @check_ins.first
-    @check_ins = @check_ins.where(time_out: nil)
+    @new_check = []
+    @check_ins.each do |a|
+      if a["time_out"]==nil
+        @new_check << a
+      end
+    end
+    @check_ins = @new_check
     @places = []
     @user_ids = []
     @times = []
