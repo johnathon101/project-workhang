@@ -1,3 +1,4 @@
+console.log(gon.places);
 //alert(gon.places);
 // gon.places[i]['lat']
 // gon.places[i]['lng']
@@ -39,13 +40,20 @@ function initialize() {
   var tryarray=[];
   
   for(i=0; i<gon.places.length; i++) {      
-
+    console.log("\n\n" + i);
+    console.log("Place:" + gon.places[i].name)
   
 
   
     window.a[i]=""
+    
+    console.log("Gravatars for this place: " + window.a);
     for(n=0; n<people; n++){ 
+      console.log("Person: " + gon.group_people[n]);
+      
       if (gon.group_people[n][1] == gon.places[i]["id"]){
+        console.log("Person place_id matches Place ID. (GOOD)");
+        
         //window.memberHere.push(gon.group_people[n][0])
         window.a[i]=window.a[i].concat(" <IMG BORDER='0' ALIGN='Left' SRC='"+ gon.group_people[n][0] + "'> ")
       };
@@ -57,11 +65,14 @@ function initialize() {
       map: myMap,
       title: gon.places[i]["name"] 
     });
+    
+    console.log("Marker created: " + marker);
+    
     //info window for each place
     (function(marker, i){
       google.maps.event.addListener(marker, 'click', function() {
         infowindow = new google.maps.InfoWindow({
-          content: (  (gon.places[i]["name"]).link("/places/"+(i+1)) + window.a[i])
+          content: (gon.places[i]["name"]).link("/places/"+(i+1)) + window.a[i]
 
           //contentstring
         });  
@@ -69,7 +80,7 @@ function initialize() {
       
       });
     })(marker,i);
-    i++
+    console.log("Added info window to 'click' for Marker.");
         
   }
 }
