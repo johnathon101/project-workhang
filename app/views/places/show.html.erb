@@ -16,13 +16,15 @@
 
 <% if @present_people %>
   <% @present_people.each do |working| %>
-    <%= Gravatar.new(working.email).image_url + "?s=200" %>
-    <%= working.name %>
+    <img src="<%= Gravatar.new("#{working.email}").image_url + "?s=75" %>">
+    <%= working.fname %> <%= working.lname %>
   <% end %>
 <% end %>
 
-<% if current_user.check_ins.where(:place_id => @place.id, :time_out => nil ) %>
-  <%= link_to("Check out!", :checkout, :method => :get) %>
+
+<% if @check_ins !=[]%>
+    <%= link_to("Check out!", :checkout, :method => :get) %>
 <% else %>
+
   <%= link_to("Check in!", checkin_path(@place.id), :method => :post) %>
 <% end %>

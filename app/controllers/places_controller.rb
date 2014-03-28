@@ -102,15 +102,21 @@ class PlacesController < ApplicationController
     @place = Place.find_by_id(params[:id])
     @imgloc="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@place.photoref}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"
     @user = current_user
-    if CheckIn.exists?(:place_id => @place.id)
-       @present=CheckIn.where(:place_id => @place.id, :time_out=>nil).user_id
+    if CheckIn.exists?(:place_id => @place.id, :time_out=>nil)
+       @present=CheckIn.where(:place_id => @place.id, :time_out=>nil)
+       i=0
        @present.each do |person_id|
-         @present_people << User.find_by_id(person_id)
+         checked_in= person_id[:user_id]
+         @present_people << User.find_by_id(checked_in)
+         i+=1
        end  
     else
        @present_people=[]
     end 
+    @check_ins=CheckIn.where(:user_id => @user.id, :place_id => @place.id, :time_out => nil)
   end
+  
+  
   
   #Return correctly formatted string of coordinates for locations in db by passing in id
   def deliver_coordinates(id)
