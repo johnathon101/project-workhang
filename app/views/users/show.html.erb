@@ -24,14 +24,22 @@
         <% end %>
         
     <% end %>
-    
-
   
-    
+    <div id="fave_five">
     <h3>
       MY TOP FIVE
     </h3>
-    
+    <% if @fav_places == nil %>
+      <p><%= @user.fname %> has yet to check in!</p>
+    <% else %>
+      <% @fav_places.each do |places| %>
+      <ul>
+        <li><%= places.name %></li>
+      </ul>
+      <% end %>
+    <% end %>
+    </div>
+     
     <% if current_user != nil && @user.id == current_user.id %>
         <%= link_to("Edit Profile", edit_user_path(@user.id)) %>
     <% end %>
@@ -52,6 +60,14 @@
   <p><%= @user.projects %></p>
   
   <h2>RECENT CHECK-INS</h2>
-  <p></p>  <!-- TODO this is where you show most recent checkins by user -->
-  
+  <% if @recent_places %>
+    <% @recent_places.each do |places| %>
+      <li><%= link_to(places.name, place_path(places.id)) %></li>
+    <% end %>
+  <% else %>
+    <p><%= @user.fname %> has not checked in.</p>
+  <% end %>
 </div>
+
+
+

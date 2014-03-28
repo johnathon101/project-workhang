@@ -15,23 +15,26 @@ class UsersController < ApplicationController
     
     
     # @check_ins = User.check_ins.first(5)
+    # @fav_places = @user.check_ins.place_id.order
     
-    # x = @user.places
-    # @fav_places = most_common_value(x)
+    # @fav_places = []
+    # @fav_places << CheckIn.where(:user_id => @user.id) && CheckIn.place_id.size.most(5)
+    
+    # @recent_places = []
+    # @recent = Place.where(:).order("created_at DESC").first(3)
+    # @recent_places << CheckIn.where(:user_id => @user.id, :place_id => @recent.id)
+    
+
+
+    @recent_places = Place.where(:id => CheckIn.where(:user_id => @user.id).order("created_at DESC"))
     
     
-    # TODO add below back in to show.html
-    # 
-    # <% if @fav_places.size == 0 %>
-    #   <p><%= @user.fname %> has yet to check in</p>
-    # <% else %>
-    #   <% @fav_places.each do |places| %>
-    #   <ul>
-    #     <li><%= places.name %><li>
-    #     </ul>
-    #   <% end %>
-    #   
-    # <% end %>
+    # @feed = Post.order("created_at DESC").first(10)
+    
+    # order("places_id DESC").first(5)
+    # @fav_places = @user.check_ins.place_id.order("created_at DESC").first(10)
+     
+    
     
     #<% @check_ins.each do |l|%>
     #<p><%= l.place_id.name %></p>
