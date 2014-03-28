@@ -32,7 +32,6 @@ class PagesController < ApplicationController
     end
     gon.places = @places
     gon.group_people=@user_gravs
-
   end
   
   def logout

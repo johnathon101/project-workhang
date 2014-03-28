@@ -1,18 +1,22 @@
 <% if current_user %>
   <% if @check_ins != [] %>
+  <div id="map">
     <h1>WHERE WE'RE WORKING</h1>
       <div id="map-canvas"></div>
+      </div>
+      <div id="checkins_home">
     <h2>CURRENT CHECK-INS</h2>
       <% @users.each do |user|%>
         <% @checks = user.check_ins.where(time_out: nil) %>
         <% @place_id = @checks.first.place_id %>
         <% @place = Place.find(@place_id)%>
     <p><% if user.id != current_user.id %>
-      <%= link_to("#{user.fname} #{user.lname}", user_path(user.id)) %> <% if user.mentor = true %>(mentor)<% end %> is 
+      <%= link_to("#{user.fname} #{user.lname}", user_path(user.id)) %> is 
     <% else %>
     You are
     <% end %> at <%= link_to("#{@place.name}", place_path(@place.id))%>. <% if user.id == current_user.id %>
     <a href="/checkout">Click here to check out.</a>
+    </div>
   <% end %></p></p>
   <% end %>
   <% else %>
@@ -56,12 +60,7 @@
   <p>
     <%= f.password_field :password_confirmation, :placeholder => "re-enter password", size: 68 %>
   </p>
-
-  <!-- <p>
-    <%= f.label "Cell Phone Number:" %>
-    <%= f.telephone_field :phone_num %>
-  </p> -->
-
+  
   <%= f.submit "sign up"%>
 <% end %>
 </div>

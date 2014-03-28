@@ -1,6 +1,18 @@
 html { height: 100% }
+
 body { height: 100%; margin: 0; padding: 0 }
+
 #map-canvas { height: 300px; }
+
 #present_person {
   display: inline-block;
+}
+
+input[type="submit"] {
+  background: #00957A;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 5px 14px 5px 14px;
+  margin-left: 10px;
+  border-radius: 5px;
 }
