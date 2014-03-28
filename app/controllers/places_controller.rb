@@ -76,16 +76,7 @@ class PlacesController < ApplicationController
   end
   
   def index
-    #if option=-1
-#          raise("#{current_user.inspect}")
-      gon.places=Place.all
-      #@user=current_user
-      #elsif option==2
-      #gon.places=Place.where(:checked_in => true)
-      #else
-    #need variable to detect a group location only from user  
-     # gon.places=Place.where(:checked_in => true)
-    #@places = Place.all
+      gon.places=Place.all 
   end
   
   def results

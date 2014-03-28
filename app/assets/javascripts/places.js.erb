@@ -37,7 +37,12 @@ function initialize() {
   
   var i=0
   while (i<gon.places.length) {      
-       
+    
+     if (gon.group_people[1] == gon.places[i]["id"] ) {
+      var contentstring = '<IMG BORDER="0" ALIGN="Left" SRC='+ gon.people[0] + '>' 
+      } else {
+        var contentstring=''
+      }
       var marker = new google.maps.Marker({
          position: new google.maps.LatLng(gon.places[i]["lat"], gon.places[i]["lng"]), 
            map: myMap,
@@ -47,7 +52,7 @@ function initialize() {
          (function(marker, i){
            google.maps.event.addListener(marker, 'click', function() {
              infowindow = new google.maps.InfoWindow({
-               content: (gon.places[i]["name"]).link("/places/"+(i+1)) 
+               content: (gon.places[i]["name"]).link("/places/"+(i+1)) + contentstring
              });
              infowindow.open(myMap,marker);
            });
