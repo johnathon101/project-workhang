@@ -16,19 +16,6 @@
 
   <div id="leftcol_profile">
   
-    <!-- <% if current_user != nil && @user.id != current_user.id %>
-    
-        <%= form_tag :text do %>
-  
-          <p>
-            <%= label_tag :text %>
-            <%= text_field_tag :text %>
-          </p>
-  
-          <%= submit_tag "Send Text!" %>
-          
-        <% end %>
-    <% end %> -->
   
   <% if current_user != nil && @user.id == current_user.id %>
       <p><%= link_to("Edit profile", edit_user_path(@user.id)) %></p>
@@ -74,7 +61,7 @@
   
   <div id="message">
 
-  <% if current_user != nil && @user.id != current_user.id && current_user.phone_num != nil %>
+  <% if current_user != nil && @user.id != current_user.id %>
   
       <%= form_tag :text do %>
           <%= text_field_tag :text, nil, placeholder: "Send #{@user.fname} a text message.", size: 40 %>
@@ -82,7 +69,7 @@
         <%= submit_tag "send text" %>
       <% end %>
       
-  <% end %>
+  <% end %>  
   
   </div>
   

@@ -39,15 +39,14 @@ class UsersController < ApplicationController
   
   def text
     @user = User.find(params[:id])
-    @current_user = current_user.fname
   
     @client = Twilio::REST::Client.new ENV["TWILIO_SID"], ENV["TWILIO_TOKEN"]
           @client.account.messages.create(
             :from => ENV["TWILIO_NUMBER"],
             :to => ("+1" + @user.phone_num.to_s),
-            # :to => +14023219124, #john
-            :body => "text from #{@user.fname} #{@user.lname}: #{params[:text]}"
-          )
+            :body => "Text from #{current_user.fname.capitalize} #{current_user.lname.capitalize}: #{params[:text]}"
+          )      
+          
     redirect_to(user_path(@user.id))
   end
 
