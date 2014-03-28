@@ -113,6 +113,7 @@ class PlacesController < ApplicationController
     else
        @present_people=[]
     end 
+    @user_checkins=CheckIn.where(:user_id => @user.id, :time_out => nil)
     @check_ins=CheckIn.where(:user_id => @user.id, :place_id => @place.id, :time_out => nil)
   end
   
