@@ -1,9 +1,10 @@
+<h1>USERS</h1>
 <% @users.each do |user| %>
   <p>
     <!-- TODO link to gravatar -->
     <!-- TODO instead of user.fname, link to @full_name method in helper later -->
-    <%= link_to(image_tag(@avatar), user_path(user.id)) %>
-    <%= link_to(user.full_name, user_path(user.id))%> 
+    <a href="/users/<%= user.id %>"><img src="<%= Gravatar.new("#{user.email}").image_url + "?s=75" %>">
+    <%= link_to(user.full_name, user_path(user.id))%> </a>
 
   </p>
 <% end %>

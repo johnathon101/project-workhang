@@ -89,10 +89,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
     
-    if @user.groups == nil
-    redirect_to(:groups)
+    
+    if current_user.groups == []
+      redirect_to :groups
     else
-    redirect_to(user_path(@user.id))
+      redirect_to(user_path(@user.id))
     end
   end
   

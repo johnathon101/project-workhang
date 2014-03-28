@@ -2,9 +2,11 @@
     <%= link_to("check out", :checkout, :method => :get, :id => 'gray_button') %>
 <% else %>
   <%= link_to("check in", checkin_path(@place.id), :method => :post, :id => 'green_button') %>
-<% end %></h1>
+<% end %> </h1>
 <h3><%= @place.street %></h3>
+<% if @present_people %>
 <hr>
+<% end %>
 <!-- <img src= <%= @imgloc %> /> -->
 <% unless @present_people.include?(current_user) && @present_people.count == 1 || @present_people == [] %>
 <h4>WHO ELSE IS HERE</h4>
@@ -22,18 +24,24 @@
     <% else %>
     <p><div id="gray_avatar"><a href="/users/<%= working.id%>"><img src="<%= Gravatar.new("#{working.email}").image_url + "?s=155" %>"></a></div></p>
     <h3><a href="/users/<%= working.id%>"><%= working.fname %> <%= working.lname %></a></h3>
-    </div>
     <% end %>
+    </div>
     <% end %>
   <% end %>
   </div>
-  <hr>
 <% end %>
 <p><%= link_to "review this place", new_review_path(@place.id), :id => 'green_button' %></p>
-<% if @reviews 
-  @reviews.each do |review| %>
-    <h4><%= review.title %></h4>
-    <h5><%= review.content %></h5>
-
+<% if @reviews != [] %>
+  <h2>REVIEWS</h2>
+  <% @reviews.each do |review| %>
+    <h3><%= review.title %></h3>
+    <% @reviewer = User.where(:id => review.user_id) %>
+    <% @reviewer = @reviewer.first %>
+    <% if @reviewer != nil %>
+    <p><strong>by 
+      <%= @reviewer.fname %> <%= @reviewer.lname %></strong></p>
+    <% end %>
+    <p><%= review.content %></p>
+    <hr>
   <% end %>
 <% end %>

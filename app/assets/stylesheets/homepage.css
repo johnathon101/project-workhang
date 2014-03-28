@@ -1,7 +1,6 @@
 #homepage_desc {
   float: left;
   width: 40%;
-  margin-top: 15px;
   margin-left: 40px;
 }
 
@@ -24,6 +23,6 @@
   padding: 5px 14px 5px 14px;
   font-size: 15px;
   float: right;
-  margin-right: 52px;
+  margin-right: 27px;
   border-radius: 5px;
 }

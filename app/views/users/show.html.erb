@@ -43,12 +43,12 @@
   <!-- <h1></h1>  TODO shows where user is currently checked in -->
   <!-- TODO if not checked in use IF conditional -->
   <% if @place %>
-  <h4>Now at <%= link_to("#{@place.name}", place_path(@place.id))%>.</h4>
+  <h4>now at <%= link_to("#{@place.name}", place_path(@place.id))%></h4>
   <% end %>
   
   <div id="message">
 
-  <% if current_user != nil && @user.id != current_user.id && current_user.phone_num != nil %>
+  <% if current_user != nil && @user.id != current_user.id && @user.phone_num != nil %>
   
       <%= form_tag :text do %>
           <%= text_field_tag :text, nil, placeholder: "Send #{@user.fname} a text message.", size: 40 %>

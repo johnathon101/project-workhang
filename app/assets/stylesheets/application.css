@@ -24,6 +24,13 @@ nav {
   background: #00957A;
 }
 
+#nav_container {
+  margin-left: auto;
+  margin-right: auto;
+  height: 120px;
+  width: 880px;
+}
+
 footer {
   background: #00957A;
 }
@@ -35,6 +42,8 @@ input {
   border-style: solid;
   padding: 5px;
 }
+
+
 
 #nav_links {
   margin-top: 25px;
@@ -123,6 +132,7 @@ input {
 input[type="submit"] {
   border: none;
   border-radius: 0;
+  cursor: pointer;
 }
 
 #container {
@@ -158,14 +168,21 @@ input[type="submit"] {
   border-style: solid;
 }
 
+#present_person h3 a {
+  color: #00957A;
+}
+
 #gray_avatar img {
   border: #C0C0C0;
   border-width: 5px;
   border-style: solid;
 }
 
+h2 a {
+  color: #00957A;
+}
+
 #logo {
-  margin-left: 200px;
   margin-top: 20px;
   float: left;
 }
@@ -262,7 +279,7 @@ textarea {
   padding: 5px;
 }
 
-#red_button a{
+#red_button a {
   color: white;
 }
 
