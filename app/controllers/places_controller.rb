@@ -10,6 +10,14 @@ class PlacesController < ApplicationController
   
   def new_review
     @place=Place.find_by_id(params[:id])  
+    @review=Review.new
+  end
+  
+  def new_review_save
+    
+    @review=Review.new(params[:review])
+    @review.save
+    redirect_to("/places/#{@review.place_id}")
   end
   
   def query_google_by_name
@@ -91,6 +99,7 @@ class PlacesController < ApplicationController
   def show
     @present_people=Array.new
     @place = Place.find_by_id(params[:id])
+    @reviews=Review.where(:place_id => @place.id)
     @imgloc="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@place.photoref}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"
     @user = current_user
     if CheckIn.exists?(:place_id => @place.id, :time_out=>nil)
