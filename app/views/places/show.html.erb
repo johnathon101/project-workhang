@@ -1,7 +1,9 @@
-<h1><%= @place.name %> <% if @check_ins !=[]%>
+<h1><%= @place.name %> <% if @check_ins !=[] %>
     <%= link_to("check out", :checkout, :method => :get, :id => 'gray_button') %>
 <% else %>
-  <%= link_to("check in", checkin_path(@place.id), :method => :post, :id => 'green_button') %>
+    <% if current_user.check_ins == [] %>
+    <%= link_to("check in", checkin_path(@place.id), :method => :post, :id => 'green_button') %>
+    <% end %>
 <% end %> </h1>
 <h3><%= @place.street %></h3>
 <% if @present_people %>

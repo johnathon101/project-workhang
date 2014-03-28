@@ -68,6 +68,15 @@ input {
   height: 21px;
 }
 
+p a {
+  color: #00957A;
+}
+
+#about_admin {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 #checkout {
   margin-top: 24px;
 }
@@ -121,6 +130,15 @@ input {
   font-family: "futura-pt";
   color: #ffffff;
   text-decoration: none;
+}
+
+#logout {
+  text-align: center;
+}
+
+#logout #green_button {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #nav_links li {
