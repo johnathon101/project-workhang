@@ -25,13 +25,12 @@ class PagesController < ApplicationController
     
     @users = User.where(:id => @user_ids)
     @places = Place.where(:id => @places)
-    gon.places = @places
     @user_gravs=Array.new
     @users.each do |user|
       location=CheckIn.where(:user_id => user.id, :time_out => nil).first
       @user_gravs <<[Gravatar.new(user.email).image_url + "?s=75", location.place_id]
     end
-    
+    gon.places = @places
     gon.group_people=@user_gravs
 
   end

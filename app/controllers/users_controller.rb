@@ -11,8 +11,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @avatar = Gravatar.new(@user.email).image_url + "?s=200"
-    
+    # @recents = @user.check_ins.order(created_at: :desc).limit(5)
+    @avatar = Gravatar.new(@user.email).image_url + "?s=155"
+    checkin = @user.check_ins.where(time_out: nil)
+    if checkin != []
+    place_id = checkin.first.place_id
+    @place = Place.find(place_id)
+    end
     
     # @check_ins = User.check_ins.first(5)
     
@@ -84,7 +89,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
     
+    if @user.groups == nil
     redirect_to(:groups)
+    else
+    redirect_to(user_path(@user.id))
+    end
   end
   
   def destroy

@@ -126,7 +126,7 @@ input[type="submit"] {
 }
 
 #container {
-  width: 940px;
+  width: 885px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
@@ -150,6 +150,18 @@ input[type="submit"] {
   padding: 5px 14px 5px 14px;
   margin-left: 10px;
   border-radius: 5px;
+}
+
+#green_avatar img {
+  border: #00957A;
+  border-width: 5px;
+  border-style: solid;
+}
+
+#gray_avatar img {
+  border: #C0C0C0;
+  border-width: 5px;
+  border-style: solid;
 }
 
 #logo {
@@ -242,12 +254,21 @@ h3 strong {
   display: block;
 }
 
+textarea {
+  border-color: #00957A;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 5px;
+}
+
 #red_button a{
   color: white;
 }
 
 a {
   text-decoration: none;
+  color: #000000;
 }
 
 footer {
@@ -259,7 +280,7 @@ footer {
   height: 51px;
   margin-top: 30px;
   width: 100%;
-  opacity: .8;
+  opacity: .9;
 }
 
 footer a {
@@ -278,6 +299,10 @@ footer a {
 }
 
 #green_avatar {
+  display: inline;
+}
+
+#gray_avatar {
   display: inline;
 }
 

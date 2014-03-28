@@ -37,7 +37,7 @@
     <% @place_id = @check_ins.first.place_id %>
     <% @place = Place.find(@place_id)%>
     <div id="checkout">
-    <div id="check_in_status"><p>I'm at <%= @place.name %>.</p></div>
+    <div id="check_in_status"><p>I'm at <a href="/places/<%= @place.id %>"><%= @place.name %>.</p></a></div>
     <a href="/checkout"><div id="checkout_button">X</div></a>
     </div>
   <% end %>
@@ -48,7 +48,7 @@
   </div>
   <div id="settings_and_logout">
   <div id="settings">
-    <a href="/settings"><img src="https://s3.amazonaws.com/WorkHang/System-Settings-icon.png" width=35></a>
+    <a href="/users/<%= current_user.id%>/edit"><img src="https://s3.amazonaws.com/WorkHang/System-Settings-icon.png" width=35></a>
   </div>
   <div id="logout">
     <a href="/logout"><img src="https://s3.amazonaws.com/WorkHang/Power.png"></a>

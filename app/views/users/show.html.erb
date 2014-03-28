@@ -1,40 +1,37 @@
-
+<div id="profile_container">
 <div id="leftcol_profile">
   
+  <% @checked_in = current_user.check_ins.where(time_out: nil) %>
+  
+  <% if @checked_in != [] %>
   <div id="green_avatar">
-    <%= link_to image_tag(@avatar) %>
+    <img src="<%= @avatar %>)">
   </div>
+  <% else %>
+  <div id="gray_avatar">
+    <img src="<%= @avatar %>)">
+  </div>
+  <% end %>
+  
+  <% if current_user != nil && @user.id == current_user.id %>
+      <p><%= link_to("Edit profile", edit_user_path(@user.id)) %></p>
+  <% end %>
 
-  <div id="green_button">
-    <%= mail_to(@user.email, "send email") %>
+  <!-- <div id="green_button"> -->
+    <!-- <%= mail_to(@user.email, "send email") %> -->
+  <!-- </div> -->
+  
+  <div id="twitter">
+    <p><a href="http://twitter.com/<%= @user.twitter %>" target="_blank"><%= @user.twitter %></a></p>
   </div>
   
-  <div id="leftcol_profile">
-  
-    <% if current_user != nil && @user.id != current_user.id %>
+  <div id="website">
+    <p><a href="http://<%= @user.website %>" target="_blank"><%= @user.website %></a></p>
+  </div>
     
-        <%= form_tag :text do %>
-  
-          <p>
-            <%= label_tag :text %>
-            <%= text_field_tag :text %>
-          </p>
-  
-          <%= submit_tag "Send Text!" %>
-        <% end %>
-        
-    <% end %>
-    
-
-  
-    
-    <h3>
+<!--     <h3>
       MY TOP FIVE
-    </h3>
-    
-    <% if current_user != nil && @user.id == current_user.id %>
-        <%= link_to("Edit Profile", edit_user_path(@user.id)) %>
-    <% end %>
+    </h3> -->
     
   </div>
   
@@ -42,16 +39,37 @@
 
 <div id="rightcol_profile">
   
-  <h2><%= @user.fname.upcase %> <%= @user.lname.upcase %></h2>
+  <h2><%= @user.fname.upcase %> <%= @user.lname.upcase %> <% if @user.mentor %>(mentor)<% end %></h2>
   <!-- <h1></h1>  TODO shows where user is currently checked in -->
   <!-- TODO if not checked in use IF conditional -->
+  <% if @place %>
+  <h4>Now at <%= link_to("#{@place.name}", place_path(@place.id))%>.</h4>
+  <% end %>
   
+  <div id="message">
+
+  <% if current_user != nil && @user.id != current_user.id && current_user.phone_num != nil %>
+  
+      <%= form_tag :text do %>
+          <%= text_field_tag :text, nil, placeholder: "Send #{@user.fname} a text message.", size: 40 %>
+
+        <%= submit_tag "send text" %>
+      <% end %>
+      
+  <% end %>
+  
+  </div>
+  
+  <% if @user.bio != nil %>
+  <h2>BIO</h2>
   <p><%= @user.bio %></p>
+  <% end %>
   
+  <% if @user.projects != nil %>
   <h2>PROJECTS</h2>
   <p><%= @user.projects %></p>
+  <% end %>
   
-  <h2>RECENT CHECK-INS</h2>
-  <p></p>  <!-- TODO this is where you show most recent checkins by user -->
-  
+  <!-- <h2>RECENT CHECK-INS</h2> -->
+</div>
 </div>

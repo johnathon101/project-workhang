@@ -1,0 +1,24 @@
+#leftcol_profile {
+  float: left;
+}
+
+#rightcol_profile {
+  float: left;
+  width: 60%;
+  margin-left: 37px;
+  margin-top: -27px;
+}
+
+#message input[type="submit"] {
+  background: #C0C0C0;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 5px 14px 5px 14px;
+  margin-left: 10px;
+  border-radius: 5px;
+  
+}
+
+#message input[type="submit"]:hover {
+  cursor:pointer;
+}

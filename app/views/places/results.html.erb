@@ -1,12 +1,14 @@
+<h1>SEARCH RESULTS</h1>
 <% i=0 %>
-
+<h3>Which place are you at?</h3>
 <% @val_loc["results"].each do |place| %>
  <% lat = place["geometry"]["location"]["lat"]%>
  <% lng = place["geometry"]["location"]["lng"] %>
  <% f=lat.to_s.gsub(".","e") %>
  <% g=lng.to_s.gsub(".","e") %>
- <%= link_to(place["name"], "/places/check_db/#{f}/#{g}/#{i}") %>
-  <%=  place["formatted_address"] %>
+ <h2><%= link_to(place["name"], "/places/check_db/#{f}/#{g}/#{i}") %></h2>
+  <p><%=  place["formatted_address"] %></p>
+  <hr>
   <% i+=1 %><br>
 <% end %>
-<%= link_to("New Location - Manually Created", :create_manually) %>
+<%= link_to("create place", :create_manually, :id => 'green_button') %>
