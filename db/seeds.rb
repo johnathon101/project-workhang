@@ -10,6 +10,7 @@ User.create(email: 'mikejtodd@gmail.com', fname: 'Michael', lname: 'Todd', passw
 User.create(email: 'ytmoik@gmail.com', fname: 'Yofred', lname: 'Moik', password: 'yofred', phone_num: 4023219124)
 User.create(email: 'ja.lueth@gmail.com', fname: 'John', lname: 'Lueth', password: 'john')
 User.create(email: 'nivram80@gmail.com', fname: 'Todd', lname: 'Nichols', password: 'todd')
+User.create(email: 'sumeet@bigwheelbrigade.com', fname: 'Sumeet', lname: 'Jain', password: 'sumeet', twitter: '@sumeetjain', website: 'sumeetjain.com')
 Place.create(name: 'Starbucks', lat: 41.258314, lng: -96.023587, desc: "America's favorite corporate coffee.", street: "219 S 72nd St", city: "Omaha", zipcode: "68114");
 Place.create(name: 'Blue Line Coffee', desc: "Where dreams go to die.", lat: 41.265216, lng: -95.989648, street: "4924 Underwood Ave", city: "Omaha", zipcode: "68132")
 Place.create(name: 'Caffeine Dreams', desc: "Go outside, you dummy.", lat: 41.258020, lng: -95.982510, street: "4524 Farnam St", city: "Omaha", zipcode: "68132")

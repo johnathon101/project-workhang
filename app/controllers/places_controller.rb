@@ -10,6 +10,14 @@ class PlacesController < ApplicationController
   
   def new_review
     @place=Place.find_by_id(params[:id])  
+    @review=Review.new
+  end
+  
+  def new_review_save
+    
+    @review=Review.new(params[:review])
+    @review.save
+    redirect_to("/places/#{@review.place_id}")
   end
   
   def query_google_by_name
@@ -76,16 +84,8 @@ class PlacesController < ApplicationController
   end
   
   def index
-    #if option=-1
-#          raise("#{current_user.inspect}")
-      gon.places=Place.all
-      #@user=current_user
-      #elsif option==2
-      #gon.places=Place.where(:checked_in => true)
-      #else
-    #need variable to detect a group location only from user  
-     # gon.places=Place.where(:checked_in => true)
-    #@places = Place.all
+      gon.places=Place.all 
+      gon.group_people=[]
   end
   
   def results
@@ -94,12 +94,12 @@ class PlacesController < ApplicationController
     #Send search query to google to find the location(Validate Location)
     @val_loc=JSON.load(open("https://maps.googleapis.com/maps/api/place/textsearch/json?key=#{ENV["GOOGLE_API_KEY"]}&location=41.2918589,-96.0812485&radius=5000&query=#{search_query}&sensor=false"))
     @@globalresults=@val_loc
-    #@user=current_user
   end
   
   def show
     @present_people=Array.new
     @place = Place.find_by_id(params[:id])
+    @reviews=Review.where(:place_id => @place.id)
     @imgloc="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@place.photoref}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"
     @user = current_user
     if CheckIn.exists?(:place_id => @place.id, :time_out=>nil)
@@ -136,4 +136,3 @@ class PlacesController < ApplicationController
   end
 
 end
-

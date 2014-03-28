@@ -28,25 +28,31 @@
   
   <% @check_ins = current_user.check_ins.where(time_out: nil) %>
   <% if @check_ins == [] %>   
+  <div class="checkin_search">
     <%= form_tag "/places/results" do %>
-    <input type="text" name="query" placeholder="Check into a place." id="checkin_search"><br>
+    <input type="text" name="query" placeholder="Check into a place." id="checkin_search" size="42"><br>
     <% end %>
+  </div>
   <% else %>
     <% @place_id = @check_ins.first.place_id %>
     <% @place = Place.find(@place_id)%>
-    <div id="check_in_status"><p>I'm at <%= @place.name %>.</p></div>
+    <div id="checkout">
+    <div id="check_in_status"><p>I'm at <a href="/places/<%= @place.id %>"><%= @place.name %>.</p></a></div>
     <a href="/checkout"><div id="checkout_button">X</div></a>
+    </div>
   <% end %>
   </div>
   
   <div id="profpic">
   <a href="/users/<%= current_user.id %>"><img src="<%= Gravatar.new("#{current_user.email}").image_url + "?s=75" %>"></a>
   </div>
+  <div id="settings_and_logout">
   <div id="settings">
-    <a href="/settings"><img src="https://s3.amazonaws.com/WorkHang/System-Settings-icon.png" width=35></a>
+    <a href="/users/<%= current_user.id%>/edit"><img src="https://s3.amazonaws.com/WorkHang/System-Settings-icon.png" width=35></a>
   </div>
   <div id="logout">
     <a href="/logout"><img src="https://s3.amazonaws.com/WorkHang/Power.png"></a>
+  </div>
   </div>
   
   <% else %>
@@ -70,14 +76,15 @@
 <div id="container" class="clearfix">
 <%= yield %>
 </div>
+</div>
 </body>
+<div id="bottom"></div>
 <footer>
     <div id="ocs">
-      <a href="http://omahacodeschool.com" target="_blank"><img src="https://s3.amazonaws.com/WorkHang/OCSlogo" alt="omaha code school" width=85></a>
+      <a href="http://omahacodeschool.com" target="_blank"><img src="https://s3.amazonaws.com/WorkHang/OCSlogo" alt="omaha code school" width=40></a>
     </div>
     <div id="credit">
       <p>made by Johnathon Lueth, Michael Todd &amp; Yofred Moik<br>
         for <a href="http://omahacodeschool.com" target="_blank">Omaha Code School</a> &copy; 2014</p>
-    </div>
 </footer>
 </html>
