@@ -27,6 +27,8 @@ ProjectWorkhang::Application.routes.draw do
   post "/groups/:id/leave" => 'groups#leave', :as => :leave
   post "/groups/:id/join" => 'groups#join', :as => :join
   
+  post "/users/:id/text" => 'users#text', :as => :text
+  
   root :to => 'pages#home'
   
 end

@@ -8,8 +8,25 @@
   <div id="green_button">
     <%= mail_to(@user.email, "send email") %>
   </div>
-
+  
   <div id="leftcol_profile">
+  
+    <% if current_user != nil && @user.id != current_user.id %>
+    
+        <%= form_tag :text do %>
+  
+          <p>
+            <%= label_tag :text %>
+            <%= text_field_tag :text %>
+          </p>
+  
+          <%= submit_tag "Send Text!" %>
+        <% end %>
+        
+    <% end %>
+    
+
+  
     
     <h3>
       MY TOP FIVE

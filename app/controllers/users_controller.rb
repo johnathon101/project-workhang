@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     
     #<% @check_ins.each do |l|%>
     #<p><%= l.place_id.name %></p>
-    #<% end %> 
+    #<% end %>
     
   end
   
@@ -46,6 +46,24 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @avatar = Gravatar.new(@user.email).image_url + "?s=75"
+  end
+  
+  def text
+  
+    @user = User.find(params[:id])
+    @current_user = current_user.fname
+  
+    @client = Twilio::REST::Client.new ENV["TWILIO_SID"], ENV["TWILIO_TOKEN"]
+          @client.account.messages.create(
+            :from => ENV["TWILIO_NUMBER"],
+            :to => ("+1" + @user.phone_num.to_s),
+            # :to => +14023219124,
+            :body => params[:text]
+          )
+    
+          #caras number: 4025258220
+    
+    redirect_to(user_path(@user.id))
   end
 
   def create
@@ -58,7 +76,7 @@ class UsersController < ApplicationController
     else
       render "new"
     end
-
+    
   end
 
   def update

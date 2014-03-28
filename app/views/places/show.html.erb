@@ -21,12 +21,8 @@
   <% end %>
 <% end %>
 
-<% if @check_ins == [] %>
-  <%= link_to("Check in!", checkin_path(@place.id), :method => :post) %>
-<% else %>
+<% if current_user.check_ins.where(:place_id => @place.id, :time_out => nil ) %>
   <%= link_to("Check out!", :checkout, :method => :get) %>
+<% else %>
+  <%= link_to("Check in!", checkin_path(@place.id), :method => :post) %>
 <% end %>
-
-
-
-
