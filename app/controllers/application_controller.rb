@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :show_session_user
   
+  
   def layout
     if current_user
     @layout = "logged_in"
@@ -32,4 +33,31 @@ class ApplicationController < ActionController::Base
     def show_session_user
       puts "\n\n\n-------------- #{session[:user_id]} ------------\n\n\n"
     end
+    
+    helper_method :markdown
+    
+    def markdown(text)
+        options = {
+          filter_html:    true,
+          hard_wrap:      true, 
+          link_attributes: { rel: 'nofollow' },
+          space_after_headers: true, 
+          fenced_code_blocks: true
+        }
+
+        extensions = {
+          autolink:          true,
+          superscript:        true,
+          disable_indented_code_blocks: true
+        }
+
+        renderer = Redcarpet::Render::HTML.new(options)
+        markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+        markdown.render(text).html_safe
+      end
+    
+    
+    
+    
 end

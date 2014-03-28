@@ -1,3 +1,4 @@
+
 <div id="profile_container">
 <div id="leftcol_profile">
   
@@ -16,7 +17,7 @@
 
   <div id="leftcol_profile">
   
-  
+
   <% if current_user != nil && @user.id == current_user.id %>
       <p><%= link_to("Edit profile", edit_user_path(@user.id)) %></p>
   <% end %>
@@ -45,7 +46,6 @@
       </ul>
       <% end %>
     <% end %> -->
-
     
   </div>
 </div>
@@ -75,22 +75,22 @@
   
   <% if @user.bio != nil %>
   <h2>BIO</h2>
-  <p><%= @user.bio %></p>
+  <p><%= markdown(@user.bio) %></p>
   <% end %>
   
   <% if @user.projects != nil %>
   <h2>PROJECTS</h2>
-  <p><%= @user.projects %></p>
+  <p><%= markdown(@user.projects) %></p>
   <% end %>
   
 
-  <!-- <h2>RECENT CHECK-INS</h2>
-  <% if @recent_places %>
+<!--   <h2>RECENT CHECK-INS</h2>
+  <% if @recent_places != nil %>
     <% @recent_places.each do |places| %>
       <li><%= link_to(places.name, place_path(places.id)) %></li>
     <% end %>
   <% else %>
     <p><%= @user.fname %> has not checked in.</p>
-  <% end %>
-</div> -->
+  <% end %> -->
+</div>
 

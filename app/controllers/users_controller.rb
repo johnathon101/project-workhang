@@ -9,23 +9,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
-    
-    # @recent_places = Place.where(:id => CheckIn.where(:user_id => @user.id)# .last(3)
-
-    # @recents = @user.check_ins.order(created_at: :desc).limit(5)
     @avatar = Gravatar.new(@user.email).image_url + "?s=155"
+    
     checkin = @user.check_ins.where(time_out: nil)
     if checkin != []
-    place_id = checkin.first.place_id
-    @place = Place.find(place_id)
-    end
-
-    
-    @fav_places = []
-    user_checkins = CheckIn.where(:user_id => @user.id)
-    user_checkins.each do |place|
-      @fav_places << Place.where(:id => place.id)
+      place_id = checkin.first.place_id
+      @place = Place.find(place_id)
     end
   end
   
@@ -65,9 +54,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-
-    
-    
+ 
     if current_user.groups == []
       redirect_to :groups
     else

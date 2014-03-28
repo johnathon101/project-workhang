@@ -46,3 +46,5 @@ require 'open-uri'
 # gem 'debugger'
 
 gem 'twilio-ruby'
+
+gem 'redcarpet'
