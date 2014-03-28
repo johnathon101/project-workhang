@@ -44,3 +44,5 @@ require 'open-uri'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'twilio-ruby'

@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(email: 'mikejtodd@gmail.com', fname: 'Michael', lname: 'Todd', password: 'michael')
-User.create(email: 'ytmoik@gmail.com', fname: 'Yofred', lname: 'Moik', password: 'yofred')
+User.create(email: 'ytmoik@gmail.com', fname: 'Yofred', lname: 'Moik', password: 'yofred', phone_num: 4025258220)
 User.create(email: 'ja.lueth@gmail.com', fname: 'John', lname: 'Lueth', password: 'john')
 User.create(email: 'nivram80@gmail.com', fname: 'Todd', lname: 'Nichols', password: 'todd')
 Place.create(name: 'Starbucks', lat: 41.258314, lng: -96.023587, desc: "America's favorite corporate coffee.", street: "219 S 72nd St", city: "Omaha", zipcode: "68114");
