@@ -58,6 +58,10 @@ class GroupsController < ApplicationController
   
   def join
     @group = Group.find(params[:id])
+
+    if Member.where(banned_id: current_user.id).where(banned: @group.id) != []
+      redirect_to :banned_from_group
+    else
     
     Member.create({
       :group_id => @group.id,
@@ -69,18 +73,26 @@ class GroupsController < ApplicationController
     else
     redirect_to :groups
     end
+    end
   end
   
-  def ban
-    @group = Group.find(params[:id])
+  def ban_confirm
     @user = User.find(params[:user_id])
+    @group = Group.find(params[:group_id])
+  end
+  
+  def ban_user
+    @user = User.find(params[:user_id])
+    @group = Group.find(params[:group_id])
+    Member.where(group_id: @group.id).where(user_id: @user.id).update_all(group_id: nil, user_id: nil, banned: @group.id, banned_id: @user.id)
+    
+    render "edit"
   end
   
   def destroy
     @group = Group.find(params[:id])
-    @member = Member.where(group_id: params[:id])
+    @member = Member.where(group_id: @group)
     
-    # Try @group.destroy if the below doesn't work.
     @group.delete
     @member.delete_all
     

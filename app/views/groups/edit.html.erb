@@ -20,12 +20,12 @@
   <%= f.submit "update group"%>
 <% end %>
 <% @members = @group.users %>
-<% @members.shift %>
-<% if @members != [] %>
+<% if @members.count != 1 %>
 <h1>OTHER MEMBERS</h1>
 <% end %>
 <div id="members">
   <% @members.each do |member| %>
+  <% unless member.id == current_user.id %>
   <% @member_checked_in = true %>
   <% @email = member.email %>
   <div id="avatar">
@@ -42,7 +42,11 @@
   <div id="name_and_ban">
     <p><a href="/users/<%= member.id %>"><%= member.fname %> <%= member.lname %></a></p>
     </div>
+    <div id="ban">
+      <a href="/groups/<%= @group.id %>/ban/<%= member.id %>"><div id="red_button">ban</div></a>
+      </div>
     </div>
+    <% end %>
   <% end %>
   </div>
   <hr>

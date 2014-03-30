@@ -10,10 +10,11 @@ ProjectWorkhang::Application.routes.draw do
   # get "/checkout/:id" => 'pages#checkout', :as => :checkout
   get "/logout" => 'pages#logout', :as => :logout
   get "/groups/:id/delete" => 'groups#delete_confirm', :as => :delete_confirm
-  get "/groups/:id/ban" => 'groups#ban_confirm', :as => :ban_confirm
+  get "/groups/:group_id/ban/:user_id" => 'groups#ban_confirm', :as => :ban
+  delete "/groups/:group_id/ban/:user_id" => 'groups#ban_user'
   post "/places/results" => "places#results"
   get "/places/check_db/:lat/:lng/:pos" => "places#check_db"
-  
+  get "/groups/banned" => 'groups#banned', :as => :banned_from_group
   get "/checkout" => 'checkins#checkout', :as => :checkout
   post "/checkout/:id" => 'checkins#create', :as => :checkin
 
