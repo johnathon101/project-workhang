@@ -6,7 +6,7 @@ class CheckinsController < ApplicationController
     CheckIn.create({
       :place_id => @place.id, 
       :user_id => current_user.id,
-      :time_in => Time.now
+      :time_in => Time.zone.now
     })
     
     redirect_to(place_path(@place.id))

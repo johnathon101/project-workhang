@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :show_session_user
-
   
   def layout
     if current_user
@@ -60,7 +59,6 @@ class ApplicationController < ActionController::Base
       def check_admin
         @admins = ['ytmoik@gmail.com', 'mikejtodd@gmail.com', 'ja.lueth@gmail.com']
         @admins.include?(current_user.email)
-      end
-    
+      end 
     
 end
