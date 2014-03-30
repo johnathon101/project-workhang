@@ -115,9 +115,25 @@ class PlacesController < ApplicationController
     end 
     @user_checkins=CheckIn.where(:user_id => @user.id, :time_out => nil)
     @check_ins=CheckIn.where(:user_id => @user.id, :place_id => @place.id, :time_out => nil)
+    check_admin ? @allow_edit=true : @allow_edit=false
   end
   
+  def edit
+    @place=Place.find(params[:id])
+  end
   
+  def update
+    binding.pry
+    @place=Place.find(params[:id])
+    @place.update_attributes(params[:place])
+    redirect_to(:root)
+  end
+  
+  def destroy
+    @place=Place.find(params[:id])
+    @place.destroy
+    redirect_to(:root)
+  end
   
   #Return correctly formatted string of coordinates for locations in db by passing in id
   def deliver_coordinates(id)

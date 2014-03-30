@@ -4,7 +4,7 @@ class LoginsController < ApplicationController
   
   def create
     user = User.find_by_email(params[:email])
-    
+    @admins=['ytmoik@gmail.com', 'mikejtodd@gmail.com', 'ja.lueth@gmail.com']
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id # <-- That is what a "log in" is.
       redirect_to :root

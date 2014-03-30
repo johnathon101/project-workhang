@@ -6,6 +6,10 @@
     <% end %>
 <% end %> </h1>
 <h3><%= @place.street %></h3>
+<% if @allow_edit == true %>
+<h4><%=link_to("Edit Place", edit_place_path(@place))%></h4>
+<h4><%= link_to("Delete Place", place_path(@place), :method=> :delete) %></h4>
+<% end %>
 <% if @present_people %>
 <hr>
 <% end %>
@@ -45,5 +49,6 @@
     <% end %>
     <p><%= review.content %></p>
     <hr>
+  <% if current_user.id == @reviewer.id %><h2>Edit</h2><% end %>  
   <% end %>
 <% end %>

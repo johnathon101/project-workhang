@@ -1,11 +1,5 @@
 console.log(gon.places);
-//alert(gon.places);
-// gon.places[i]['lat']
-// gon.places[i]['lng']
-// gon.places[i]['name']
 
-      //End of for loop
-//gon.places is the current var for all places
 function initialize() {
   var mapOptions = {
     zoom: 11,
@@ -40,13 +34,10 @@ function initialize() {
   var tryarray=[];
   
   for(i=0; i<gon.places.length; i++) {      
+    
     console.log("\n\n" + i);
     console.log("Place:" + gon.places[i].name)
-  
-
-  
     window.a[i]=""
-    
     console.log("Gravatars for this place: " + window.a);
     for(n=0; n<people; n++){ 
       console.log("Person: " + gon.group_people[n]);
@@ -72,8 +63,7 @@ function initialize() {
     (function(marker, i){
       google.maps.event.addListener(marker, 'click', function() {
         infowindow = new google.maps.InfoWindow({
-          content: (gon.places[i]["name"]).link("/places/"+(i+1)) + "<br><br>" + window.a[i]
-
+          content: (gon.places[i]["name"]).link("/places/"+ gon.places[i]["id"]) + "<br><br>" + window.a[i]
           //contentstring
         });  
         infowindow.open(myMap,marker);
