@@ -18,8 +18,8 @@ body {
 
 #map {
   float: left;
-  width: 52%;
   margin-right: 30px;
+  width: 65%;
 }
 
 #checkins_home {
@@ -29,13 +29,14 @@ body {
 
 #checkins_avs {
   float: left;
-  width: 20%;
+  width: 25%;
 }
 
 #checkins_names {
   float: left;
   width: 70%;
   margin-left: 5px;
+  margin-top: -19px;
 }
 
 #checkins_home h2 {
