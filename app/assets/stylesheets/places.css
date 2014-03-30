@@ -16,6 +16,10 @@ body {
   margin-left: 0px;
 }
 
+#checkin {
+  display: inline-block;
+}
+
 #map {
   float: left;
   margin-right: 30px;

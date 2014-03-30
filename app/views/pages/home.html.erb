@@ -13,6 +13,7 @@
         <% @checks = user.check_ins.where(time_out: nil) %>
         <% @place_id = @checks.first.place_id %>
         <% @place = Place.find(@place_id)%>
+        <div id="checkin">
         <div id="checkins_avs">
         <div id="green_avatar">
           <a href="/users/<%= user.id %>"><img src="<%= Gravatar.new("#{user.email}").image_url + "?s=50" %>"></a>
@@ -23,8 +24,9 @@
     <% else %>
     You are
     <% end %> at <%= link_to("#{@place.name}", place_path(@place.id))%>. <% if user.id == current_user.id %>
-    <a href="/checkout">Click here to check out.</a></p>
+    <a href="/checkout">Click here to check out.</a></p>   
   <% end %>
+  </div>
   </div>
   <br>
   <% end %>
