@@ -24,6 +24,10 @@ nav {
   background: #00957A;
 }
 
+#space {
+  height: 20px;
+}
+
 #nav_container {
   margin-left: auto;
   margin-right: auto;
@@ -175,6 +179,10 @@ input[type="submit"] {
   border: none;
   border-radius: 0;
   cursor: pointer;
+}
+
+#group_edit input[type="submit"] {
+  width: 165px;
 }
 
 input[type="submit"]:hover {
