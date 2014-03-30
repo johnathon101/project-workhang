@@ -59,7 +59,9 @@ class GroupsController < ApplicationController
   def join
     @group = Group.find(params[:id])
 
-    if Member.where(banned_id: current_user.id).where(banned: @group.id) != []
+    @banned = Member.where(banned_id: current_user.id).where(banned: @group.id)
+
+    if @banned != [] || nil
       redirect_to :banned_from_group
     else
     
@@ -68,11 +70,11 @@ class GroupsController < ApplicationController
       :user_id => current_user.id
     })
     
-    if current_user.groups.count == 1
-      redirect_to :root
-    else
-    redirect_to :groups
-    end
+      if current_user.groups.count == 1
+        redirect_to :root
+      else
+      redirect_to :groups
+      end
     end
   end
   

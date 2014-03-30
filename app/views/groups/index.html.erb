@@ -1,45 +1,51 @@
 <div id="groups_create" class="clearfix">
-<div id="groups_heading">
-<h1 id="label">GROUPS</h1>
-</div>
-<div id="create_button">
-  <a href="/groups/new"><div id="green_button">create a group</div></a></div>
+  <div id="groups_heading">
+    <h1 id="label">GROUPS</h1>
   </div>
-  <% if current_user.groups == [] %>
-  <h3>You aren't in any groups. Please join or create one.</h3>
-  <% end %>
-  <div id="groups">
-<% @groups.each do |group| %>
-<div id="group">
-<h2><%= group.name %></h2>
-  <h4><%= group.desc %></h4>
-<div id="members" class="clearfix">
-  <% @members = group.users %>
-  <% @members.each do |member| %>
-  <% @member_checked_in = member.check_ins.where(time_out: nil) %>
-  <% @email = member.email %>
-  <% if @member_checked_in != [] %>
-    <div id="green_avatar">
-      <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
-    </div>
-  <% else %>
-    <div id="gray_avatar">
-      <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
-    </div>
-  <% end %>
-<% end %>
-</div>
-<% @is_member = Member.where("user_id = ?", current_user.id).where("group_id = ?", group.id) %>
-  <% if current_user.id == group.mod %>
-   <a href="/groups/<%= group.id %>/edit"> <div id="gray_button">
-      edit
-    </div></a>
-  <% elsif @is_member != [] %>
-      <%= link_to("leave", "/groups/#{group.id}/leave", :method => :leave, :id => 'red_button') %>
-  <% else %>
-      <%= link_to("join", "/groups/#{group.id}/join", :method => :join, :id => 'green_button')%>
+  <div id="create_button">
+    <a href="/groups/new">
+      <div id="green_button">
+        create a group
       </div>
-  <% end %>
+    </a>
   </div>
-  <hr>
+</div>
+<% if current_user.groups == [] %>
+  <h3>You aren't in any groups. Please join or create one.</h3>
 <% end %>
+<div id="groups">
+  <% @groups.each do |group| %>
+    <div id="group">
+      <h2><%= group.name %></h2>
+        <h4><%= group.desc %></h4>
+          <div id="members" class="clearfix">
+            <% @members = group.users %>
+              <% @members.each do |member| %>
+                <% @member_checked_in = member.check_ins.where(time_out: nil) %>
+                <% @email = member.email %>
+                  <% if @member_checked_in != [] %>
+                    <div id="green_avatar">
+                      <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
+                    </div>
+                  <% else %>
+                    <div id="gray_avatar">
+                      <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
+                    </div>
+                  <% end %>
+              <% end %>
+          </div>
+        <% @is_member = Member.where("user_id = ?", current_user.id).where("group_id = ?", group.id) %>
+          <% if current_user.id == group.mod %>
+           <a href="/groups/<%= group.id %>/edit"> 
+             <div id="gray_button">
+               edit
+             </div></a>
+          <% elsif @is_member != [] %>
+            <%= link_to("leave", "/groups/#{group.id}/leave", :method => :leave, :id => 'red_button') %>
+          <% else %>
+            <%= link_to("join", "/groups/#{group.id}/join", :method => :join, :id => 'green_button')%>
+          <% end %>
+    </div>
+  <% end %>
+</div>
+<hr>
