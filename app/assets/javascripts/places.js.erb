@@ -72,7 +72,7 @@ function initialize() {
     (function(marker, i){
       google.maps.event.addListener(marker, 'click', function() {
         infowindow = new google.maps.InfoWindow({
-          content: (gon.places[i]["name"]).link("/places/"+(i+1)) + window.a[i]
+          content: (gon.places[i]["name"]).link("/places/"+(i+1)) + "<br><br>" + window.a[i]
 
           //contentstring
         });  

@@ -68,8 +68,12 @@ input {
   height: 21px;
 }
 
-p a {
-  color: #00957A;
+#checkout_button:hover {
+  opacity: 0.7;
+}
+
+p a:hover {
+  opacity: 0.9;
 }
 
 #about_admin {
@@ -103,6 +107,18 @@ p a {
   margin-left: 30px;
   float: left;
   margin-top: 47px;
+}
+
+#nav_links li a:hover {
+  opacity: 0.9;
+}
+
+#settings:hover {
+  opacity: 0.9;
+}
+
+#logout:hover {
+  opacity: 0.9;
 }
 
 #profpic {
@@ -152,6 +168,10 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+input[type="submit"]:hover {
+  opacity: 0.9;
+}
+
 #container {
   width: 885px;
   margin-left: auto;
@@ -166,8 +186,8 @@ input[type="submit"] {
 
 #login {
   float:left;
-  margin-left: 50px;
-  margin-top: 70px;
+  margin-left: 124px;
+  margin-top: 72px;
 }
 
 #login input[type="submit"] {
@@ -181,7 +201,7 @@ input[type="submit"] {
 
 #green_avatar img {
   border: #00957A;
-  border-width: 5px;
+  border-width: 3px;
   border-style: solid;
 }
 
@@ -191,12 +211,16 @@ input[type="submit"] {
 
 #gray_avatar img {
   border: #C0C0C0;
-  border-width: 5px;
+  border-width: 3px;
   border-style: solid;
 }
 
 h2 a {
   color: #00957A;
+}
+
+h2 a:hover {
+  color: #878787;
 }
 
 #logo {
@@ -251,7 +275,7 @@ h3 strong {
   font-size: 21px;
   padding: 2px 10px 5px 10px;
   border-radius: 5px;
-  width: 135px;
+  width: 146px;
   text-align: center;
   display: block;
 }
@@ -267,7 +291,7 @@ h3 strong {
   font-size: 21px;
   padding: 2px 10px 5px 10px;
   border-radius: 5px;
-  width: 135px;
+  width: 146px;
   text-align: center;
   display: block;
 }
@@ -283,7 +307,7 @@ h3 strong {
   font-size: 21px;
   padding: 2px 10px 5px 10px;
   border-radius: 5px;
-  width: 135px;
+  width: 146px;
   text-align: center;
   display: block;
 }
@@ -302,19 +326,47 @@ textarea {
 
 a {
   text-decoration: none;
-  color: #000000;
+  color: #00957A;
 }
 
 footer {
   color: #ffffff;
   padding-top: 13px;
-  padding-left: 155px;
   position: fixed;
   bottom: 0;
   height: 51px;
   margin-top: 30px;
   width: 100%;
   opacity: .9;
+}
+
+#center_vertical {
+  margin-top: 160px;
+  margin-bottom: auto;
+}
+
+#center_vertical #red_button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#footer_container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+
+#avatar {
+  float: left;
+  margin-right: 10px;
+}
+
+#rightcol_profile h1 {
+  color: #00957A;
+}
+
+#label {
+  margin-top: 0px;
 }
 
 footer a {

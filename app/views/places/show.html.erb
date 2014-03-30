@@ -1,4 +1,4 @@
-<h1><%= @place.name %> <% if @check_ins !=[] %>
+<h1 id="label"><%= @place.name %> <% if @check_ins !=[] %>
     <%= link_to("check out", :checkout, :method => :get, :id => 'gray_button') %>
 <% else %>
     <% if @user_checkins == [] %>

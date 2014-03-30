@@ -10,7 +10,8 @@
   <script type="text/javascript" src="//use.typekit.net/rsb7xmd.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
-<nav class="clearfix">
+<body>
+<nav class="clearfix" id="header">
   <div id="nav_container">
   <div id="logo">
     <a href="/"><img src="https://s3.amazonaws.com/WorkHang/WorkHangTransparent.png" alt="logo"></a>
@@ -62,9 +63,9 @@
     <%= form_tag logins_path do %>
   
       <p>
-        <%= text_field_tag :email, nil, placeholder: "email" %>
+        <%= text_field_tag :email, nil, placeholder: "email", size: 27 %>
   
-        <%= password_field_tag :password, nil, placeholder: "password" %>
+        <%= password_field_tag :password, nil, placeholder: "password", size: 27 %>
   
       <%= submit_tag "log in" %>
             </p>
@@ -74,19 +75,24 @@
   <% end %>
   </div>
 </nav>
-<body>
 <div id="container" class="clearfix">
+  <div id="body" class="clearfix">
 <%= yield %>
 </div>
 </div>
-</body>
+</div>
+</div>
+</div>
 <div id="bottom"></div>
 <footer>
+    <div id="footer_container">
     <div id="ocs">
       <a href="http://omahacodeschool.com" target="_blank"><img src="https://s3.amazonaws.com/WorkHang/OCSlogo" alt="omaha code school" width=40></a>
     </div>
     <div id="credit">
       <p>made by Johnathon Lueth, Michael Todd &amp; Yofred Moik<br>
         for <a href="http://omahacodeschool.com" target="_blank">Omaha Code School</a> &copy; 2014</p>
+    </div>
 </footer>
+</body>
 </html>

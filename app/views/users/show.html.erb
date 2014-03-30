@@ -1,4 +1,3 @@
-
 <div id="profile_container">
 <div id="leftcol_profile">
   
@@ -13,8 +12,6 @@
     <img src="<%= @avatar %>)">
   </div>
   <% end %>
-
-  <div id="leftcol_profile">
   
   <% if current_user != nil && @user.id == current_user.id %>
       <p><%= link_to("Edit profile", edit_user_path(@user.id)) %></p>
@@ -50,7 +47,7 @@
 
 <div id="rightcol_profile">
   
-  <h2><%= @user.fname.upcase %> <%= @user.lname.upcase %> <% if @user.mentor %>(mentor)<% end %></h2>
+  <h1><%= @user.fname.upcase %> <%= @user.lname.upcase %> <% if @user.mentor %>(mentor)<% end %></h1>
   <!-- <h1></h1>  TODO shows where user is currently checked in -->
   <!-- TODO if not checked in use IF conditional -->
   <% if @place %>
@@ -70,13 +67,13 @@
   <% end %>  
   
   </div>
-  
-  <% if @user.bio != nil %>
+
+  <% unless @user.bio == nil %>
   <h2>BIO</h2>
   <p><%= markdown(@user.bio) %></p>
   <% end %>
   
-  <% if @user.projects != nil %>
+  <% unless @user.projects == nil %>
   <h2>PROJECTS</h2>
   <p><%= markdown(@user.projects) %></p>
   <% end %>

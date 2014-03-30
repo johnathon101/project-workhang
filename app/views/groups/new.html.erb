@@ -1,4 +1,4 @@
-<h1>CREATE A GROUP</h1>
+<h1 id="label">CREATE A GROUP</h1>
 <%= form_for @group do |f| %>
 
   <% if @group.errors.any? %>
@@ -9,12 +9,12 @@
 
   <p>
     <%= f.label "Name:" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, size: 44 %>
   </p>
   
   <p>
-    <%= f.label "Description:" %>
-    <%= f.text_area :desc %>
+    <%= f.label "Description:" %><br><br>
+    <%= f.text_area :desc, rows: 10 %>
   </p>
   
   <%= f.submit "submit"%>

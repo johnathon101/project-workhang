@@ -1,6 +1,6 @@
 <div id="groups_create" class="clearfix">
 <div id="groups_heading">
-<h1>GROUPS</h1>
+<h1 id="label">GROUPS</h1>
 </div>
 <div id="create_button">
   <a href="/groups/new"><div id="green_button">create a group</div></a></div>
@@ -31,9 +31,9 @@
 </div>
 <% @is_member = Member.where("user_id = ?", current_user.id).where("group_id = ?", group.id) %>
   <% if current_user.id == group.mod %>
-    <div id="gray_button">
-      <a href="/groups/<%= group.id %>/edit">edit</a>
-    </div>
+   <a href="/groups/<%= group.id %>/edit"> <div id="gray_button">
+      edit
+    </div></a>
   <% elsif @is_member != [] %>
       <%= link_to("leave", "/groups/#{group.id}/leave", :method => :leave, :id => 'red_button') %>
   <% else %>

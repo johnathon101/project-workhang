@@ -1,21 +1,20 @@
 class PagesController < ApplicationController
   def home
     @user = User.new
-    if current_user && current_user.groups != []
+    if current_user && current_user.groups != [] || nil
     groups = current_user.groups
-    @check_ins = []
+    @checks = []
     groups.each do |group|
       check_in = group.check_ins
-      @check_ins << check_in
+      @checks << check_in
     end
-    @check_ins = @check_ins.first
-    @new_check = []
-    @check_ins.each do |a|
-      if a["time_out"]==nil
-        @new_check << a
+    @checks = @checks.flatten
+    @check_ins = []
+    @checks.each do |check|
+      if check["time_out"] == nil
+        @check_ins << check
       end
     end
-    @check_ins = @new_check
     @places = []
     @users = []
     @times = []
@@ -27,8 +26,6 @@ class PagesController < ApplicationController
       @users << user
       @times << time
     end
-    end
-
     @users = User.where(:id => @users)
     @places = Place.where(:id => @places)
     @user_gravs=Array.new
@@ -37,6 +34,28 @@ class PagesController < ApplicationController
       @user_gravs <<[Gravatar.new(user.email).image_url + "?s=75", place.place_id]
       end
     end
+  else
+    if current_user
+    if current_user.check_ins.where(time_out:nil) == []
+      @check_ins = []
+    else
+      @checks = current_user.check_ins
+      @check_ins = @checks.where(time_out: nil)
+      @check_ins = @check_ins.first
+      @places = @check_ins.place_id
+      @users = @check_ins.user_id
+      @times = @check_ins.created_at
+      @users = User.where(:id => @users)
+      @places = Place.where(:id => @places)
+      @user_gravs=Array.new
+      @users.each do |user|
+        location=CheckIn.where(:user_id => user.id, :time_out => nil).each do |place|
+        @user_gravs <<[Gravatar.new(user.email).image_url + "?s=75", place.place_id]
+        end
+    end
+    end
+  end
+  end
     gon.places = @places
     gon.group_people=@user_gravs
   end

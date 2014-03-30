@@ -1,8 +1,51 @@
-html { height: 100% }
+html,
+body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+}
 
-body { height: 100%; margin: 0; padding: 0 }
+#body {
+  width: 805px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-#map-canvas { height: 300px; }
+#search_place input[type="submit"] {
+  margin-top: 20px;
+  margin-left: 0px;
+}
+
+#map {
+  float: left;
+  width: 52%;
+  margin-right: 30px;
+}
+
+#checkins_home {
+  height: 100%;
+  overflow: scroll;
+}
+
+#checkins_avs {
+  float: left;
+  width: 20%;
+}
+
+#checkins_names {
+  float: left;
+  width: 70%;
+  margin-left: 5px;
+}
+
+#checkins_home h2 {
+  font-size: 23px;
+  margin-top: 0px;
+}
+
+#map-canvas { 
+  height: 350px; 
+}
 
 #present_person {
   display: inline-block;
@@ -13,6 +56,5 @@ input[type="submit"] {
   color: #ffffff;
   font-size: 15px;
   padding: 5px 14px 5px 14px;
-  margin-left: 10px;
   border-radius: 5px;
 }

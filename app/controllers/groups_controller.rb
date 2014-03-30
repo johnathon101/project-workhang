@@ -64,7 +64,11 @@ class GroupsController < ApplicationController
       :user_id => current_user.id
     })
     
+    if current_user.groups.count == 1
+      redirect_to :root
+    else
     redirect_to :groups
+    end
   end
   
   def ban

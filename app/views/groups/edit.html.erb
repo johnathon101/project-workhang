@@ -1,4 +1,4 @@
-<h1>EDIT GROUP</h1>
+<h1 id="label">EDIT GROUP</h1>
 <%= form_for @group do |f| %>
 
   <% if @group.errors.any? %>
@@ -9,12 +9,12 @@
 
   <p>
     <%= f.label "Name:" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, size: 44 %>
   </p>
   
   <p>
-    <%= f.label "Description:" %>
-    <%= f.text_area :desc %>
+    <%= f.label "Description:" %><br>
+    <%= f.text_area :desc, rows: 5 %>
   </p>
   
   <%= f.submit "update group"%>
@@ -41,9 +41,10 @@
   <% end %>
   <div id="name_and_ban">
     <p><a href="/users/<%= member.id %>"><%= member.fname %> <%= member.lname %></a></p>
-    <!-- <div id="red_button"><a href="/groups/<%= @group.id %>/ban?user_id=<%= member.id %>">ban</a></div> -->
-  </div>
+    </div>
+    </div>
   <% end %>
+  </div>
   <hr>
   <div id="red_button"><%= link_to("delete group", "/groups/#{@group.id}/delete")%></div>
 </div>

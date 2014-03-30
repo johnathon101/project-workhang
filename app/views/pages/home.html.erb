@@ -1,32 +1,38 @@
 <% if current_user %>
-  <% if @check_ins != nil %>
+  <% if @check_ins == [] || nil || @checkins == [] && current_user.groups == [] || nil %>
+  <h2>Well, shoot. No one is working right now. Not even you.</h2>
+    <p>Be the first to work, and check into a place above.</p>
+    <p>Or <a href="/groups">join more groups</a> to meet more like-minded people.</p>
+    <% else %>
+  <h1 id="label">WHERE WE'RE WORKING</h1>
   <div id="map">
-    <h1>WHERE WE'RE WORKING</h1>
       <div id="map-canvas"></div>
       </div>
       <div id="checkins_home">
-    <h2>CURRENT CHECK-INS</h2>
       <% @users.each do |user|%>
         <% @checks = user.check_ins.where(time_out: nil) %>
         <% @place_id = @checks.first.place_id %>
         <% @place = Place.find(@place_id)%>
-    <p><% if user.id != current_user.id %>
+        <div id="checkins_avs">
+        <div id="green_avatar">
+          <a href="/users/<%= user.id %>"><img src="<%= Gravatar.new("#{user.email}").image_url + "?s=50" %>"></a>
+        </div>
+        </div>
+    <div id="checkins_names"><p><% if user.id != current_user.id %>
       <%= link_to("#{user.fname} #{user.lname}", user_path(user.id)) %> is 
     <% else %>
     You are
     <% end %> at <%= link_to("#{@place.name}", place_path(@place.id))%>. <% if user.id == current_user.id %>
-    <a href="/checkout">Click here to check out.</a>
-    </div>
-  <% end %></p></p>
+    <a href="/checkout">Click here to check out.</a></p>
   <% end %>
-  <% else %>
-  <h2>Well, shoot. No one is working right now. Not even you.</h2>
-    <p>Be the first to work, and check into a place above.</p>
-    <p>Or <a href="/groups">join more groups</a> to meet more like-minded people.</p>
+  </div>
+  <br>
+  <% end %>
+  
 <% end %>
 <% else %>
 <div id="homepage_desc">
-<h1>Join others who are working remotely or hanging after-hours.</h2>
+<h1>Meet others who are working remotely or hanging after-hours.</h2>
 <hr>
 <h3><strong>DISCOVER</strong> NEW PLACES.</h3>
 <h3><strong>LEARN</strong> NEW THINGS.</h3>

@@ -1,5 +1,5 @@
 <% @place=Place.find(params["format"]) %>
-<h1>REVIEW <%= @place.name.upcase %></h1>
+<h1 id="label">REVIEW <%= @place.name.upcase %></h1>
     <%= form_for @review, :url => {:action => 'new_review'} do |r| %>
       <% if @review.errors.any? %>
         <%@review.errors.full_messages.each do |error_msg| %>

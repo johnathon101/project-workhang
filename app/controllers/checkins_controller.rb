@@ -26,7 +26,7 @@ class CheckinsController < ApplicationController
       :time_out => Time.now
     })
   
-    redirect_to(:root)
+    redirect_to :back
     
   end 
 

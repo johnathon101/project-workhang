@@ -1,4 +1,4 @@
-<h1><%= @user.fname.upcase %>'S INFO</h1>
+<h1 id="label">EDIT PROFILE</h1>
 
 <% if current_user %>
 
@@ -15,9 +15,11 @@
   <% end %>
   
   <p>
-    <%= f.label "cell phone number (10 digits, no spaces or dashes):" %><br><br>
+    <p><em>(If you add your phone number, people can text message you through Work/Hang.)</em></p>
+    <p><%= f.label "cell phone number (10 digits, no spaces or dashes):" %><br><br>
     <%= f.telephone_field :phone_num, :size => 30 %>
   </p>
+  
 
   <p>
     <%= f.label "bio:" %><br><br>
@@ -30,10 +32,10 @@
     <%= f.text_area :projects, :size => 100, :rows => 10 %>
   </p>
   
-  <p>
+  <!-- <p>
     <%= f.label "website:" %>
     <%= f.text_field :website %>
-  </p>
+  </p> -->
   
   <p>
     <%= f.label "twitter (@handle):" %>
