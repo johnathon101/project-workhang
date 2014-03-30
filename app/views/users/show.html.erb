@@ -52,6 +52,7 @@
   <!-- TODO if not checked in use IF conditional -->
   <% if @place %>
   <h4>now at <%= link_to("#{@place.name}", place_path(@place.id))%></h4>
+  <h4>checked in at <%= format_date(@place.created_at) %></h4>
   <% end %>
   
   <div id="message">
