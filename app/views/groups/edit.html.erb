@@ -1,4 +1,5 @@
 <h1 id="label">EDIT GROUP</h1>
+<div id="group_edit">
 <%= form_for @group do |f| %>
 
   <% if @group.errors.any? %>
@@ -7,48 +8,58 @@
     <% end %>
   <% end %>
 
-  <p>
-    <%= f.label "Name:" %>
-    <%= f.text_field :name, size: 44 %>
-  </p>
-  
-  <p>
-    <%= f.label "Description:" %><br>
-    <%= f.text_area :desc, rows: 5 %>
-  </p>
-  
-  <%= f.submit "update group"%>
+    <p>
+      <%= f.label "Name:" %>
+      <%= f.text_field :name, size: 44 %>
+    </p>
+
+    <p>
+      <%= f.label "Description:" %><br>
+      <%= f.text_area :desc, rows: 5 %>
+    </p>
+
+    <%= f.submit "update group"%>
 <% end %>
+</div>
+<div id="group_members">
 <% @members = @group.users %>
 <% if @members.count != 1 %>
-<h1>OTHER MEMBERS</h1>
+  <h2>OTHER MEMBERS</h2>
 <% end %>
 <div id="members">
   <% @members.each do |member| %>
-  <% unless member.id == current_user.id %>
-  <% @member_checked_in = true %>
-  <% @email = member.email %>
-  <div id="avatar">
-  <% if @member_checked_in %>
-    <div id="green_avatar">
-      <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
-    </div>
-  <% else %>
-    <div id="gray_avatar">
-      <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
-    </div>
-  </div>
-  <% end %>
-  <div id="name_and_ban">
-    <p><a href="/users/<%= member.id %>"><%= member.fname %> <%= member.lname %></a></p>
-    </div>
-    <div id="ban">
-      <a href="/groups/<%= @group.id %>/ban/<%= member.id %>"><div id="red_button">ban</div></a>
+    <% unless member.id == current_user.id %>
+      <% @member_checked_in = member.check_ins.where(time_out: nil) %>
+      <% @email = member.email %>
+        <div id="avatar">
+        <% if @member_checked_in %>
+          <div id="green_avatar">
+            <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
+          </div>
+        <% else %>
+          <div id="gray_avatar">
+            <a href="/users/<%= member.id %>"><img src="<%= Gravatar.new("#{@email}").image_url + "?s=75" %>"></a>
+          </div>
+        </div>
+        <% end %>
+      <div id="name">
+        <p>
+          <a href="/users/<%= member.id %>">
+            <%= member.fname %> <%= member.lname %>
+          </a>
+        </p>
       </div>
-    </div>
-    <% end %>
+        <div id="ban">
+          <a href="/groups/<%= @group.id %>/ban/<%= member.id %>">
+            <div id="red_button">ban</div>
+          </a>
+        </div>
+      </div>
+  <% end %>
   <% end %>
   </div>
   <hr>
+  </div>
+  <div id="space"></div>
   <div id="red_button"><%= link_to("delete group", "/groups/#{@group.id}/delete")%></div>
 </div>
