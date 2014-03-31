@@ -3,3 +3,40 @@
 
 en:
   hello: "Hello world"
+
+
+en:
+  activerecord:
+    attributes:
+      user:
+        email: "Your email address"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "is required"
+              
+en:
+  activerecord:
+    attributes:
+      user:
+        fname: "Your first name"
+    errors:
+      models:
+        user:
+          attributes:
+            fname:
+              blank: "is required"
+              
+en:
+  activerecord:
+    attributes:
+      user:
+        lname: "Your last name"
+    errors:
+      models:
+        user:
+          attributes:
+            lname:
+              blank: "is required"

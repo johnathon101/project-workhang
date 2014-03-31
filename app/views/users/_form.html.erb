@@ -1,0 +1,32 @@
+<div id="signup">
+<h2>SIGN UP</h2>
+
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |error_msg| %>
+      <em><%= error_msg %>!</em>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= f.text_field :fname, :placeholder => "first name", class: 'form_inline' %>
+
+    <%= f.text_field :lname, :placeholder => "last name", class: 'form_inline' %>
+  </p>
+
+  <p>
+    <%= f.email_field :email, :placeholder => "Gravatar email", size: 68 %>
+  </p>
+
+  <p>
+    <%= f.password_field :password, :placeholder => "password", size: 68 %>
+  </p>
+
+  <p>
+    <%= f.password_field :password_confirmation, :placeholder => "re-enter password", size: 68 %>
+  </p>
+  
+  <%= f.submit "sign up"%>
+<% end %>
+</div>

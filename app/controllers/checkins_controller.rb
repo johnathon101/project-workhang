@@ -23,7 +23,7 @@ class CheckinsController < ApplicationController
     # redirect_to(:root)
             
     current_user.check_ins.where(time_out: nil).first.update_attributes({
-      :time_out => Time.now
+      :time_out => Time.zone.now
     })
   
     redirect_to :back

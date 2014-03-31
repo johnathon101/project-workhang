@@ -5,9 +5,7 @@ ProjectWorkhang::Application.routes.draw do
   get "/places/new_review" => 'places#new_review', :as => :new_review
   post "/places/new_review" => 'places#new_review_save', :as => :new_review_save
   
-    # get "/checkin/:id" => 'pages#checkin', :as => :checkin
   get "/about" => 'pages#about', :as => :about
-  # get "/checkout/:id" => 'pages#checkout', :as => :checkout
   get "/logout" => 'pages#logout', :as => :logout
   get "/groups/:id/delete" => 'groups#delete_confirm', :as => :delete_confirm
   get "/groups/:group_id/ban/:user_id" => 'groups#ban_confirm', :as => :ban

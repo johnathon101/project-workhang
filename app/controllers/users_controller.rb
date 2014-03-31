@@ -47,7 +47,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id  
       redirect_to(edit_user_path(@user.id))
     else
-      redirect_to :root
+      render :home
+      return
     end
   end
 
