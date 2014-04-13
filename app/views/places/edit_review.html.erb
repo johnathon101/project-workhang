@@ -1,0 +1,21 @@
+
+<!--# , :url => {:action => 'edit_review'} -->
+<h1 id="label">EDIT YOUR REVIEW</h1>
+    <%= form_for @review  do |i| %>
+      <% if @review.errors.any? %>
+        <%@review.errors.full_messages.each do |error_msg| %>
+          <p><%= error_msg %></p>
+        <% end %>
+      <% end %>
+  
+  <p>
+    <%= i.label :title %>
+    <%= i.text_field :title %>
+  </p>
+  
+  <p>
+    <%= r.label "review" %><br>
+    <%= r.text_area :content %>
+  </p>
+    <%= i.submit %>
+<% end %>

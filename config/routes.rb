@@ -2,9 +2,11 @@ ProjectWorkhang::Application.routes.draw do
 
   get  "/places/new_manual" => 'places#new_manual', :as => :create_manually
   post '/places/new_manual' =>'places#new_manual_save', :as => :new_manual_save
-  get "/places/new_review" => 'places#new_review', :as => :new_review
-  post "/places/new_review" => 'places#new_review_save', :as => :new_review_save
-  
+  #get "/places/new_review" => 'places#new_review', :as => :new_review
+  #post "/places/new_review" => 'places#new_review_save', :as => :new_review_save
+  get "/reviews/delete" => 'reviews#destroy', :as => :delete_review
+  get "/reviews/update" => 'reviews#update', :as => :update_review
+  get "/reviews/show" => 'reviews#show', :as => :show_review
   get "/about" => 'pages#about', :as => :about
   get "/logout" => 'pages#logout', :as => :logout
   get "/groups/:id/delete" => 'groups#delete_confirm', :as => :delete_confirm
@@ -22,6 +24,7 @@ ProjectWorkhang::Application.routes.draw do
   resources :places
   resources :members
   resources :checkins
+  resources :reviews
   
   post "/groups/:id/leave" => 'groups#leave', :as => :leave
   post "/groups/:id/join" => 'groups#join', :as => :join

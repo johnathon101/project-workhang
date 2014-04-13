@@ -9,12 +9,11 @@ class PlacesController < ApplicationController
   end
   
   def new_review
-    @place=Place.find_by_id(params[:id])  
-    @review=Review.new
+    @place=Place.find_by_id(params[:id]) || Place.find_by_id(params[:place_id])
+    @review=Review.find_by_id(params[:review_id]) || Review.new
   end
   
   def new_review_save
-    
     @review=Review.new(params[:review])
     @review.save
     redirect_to("/places/#{@review.place_id}")
