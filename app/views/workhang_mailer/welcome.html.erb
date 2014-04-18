@@ -1,0 +1,5 @@
+<h1>Your name is <%= @user.name%>.</h1>
+
+<p>Here's a link to your profile:</p>
+
+<p><%= link_to "Profile", user_show_path(@user.id) %></p>
