@@ -1,4 +1,4 @@
-console.log(gon.places);
+
 
 function initialize() {
   var mapOptions = {
@@ -24,54 +24,54 @@ function initialize() {
     },
     // MAP CONTROLS (END)
   };
-  
+
   var myMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  window.a= [];  
+  window.a= [];
   var p = 0;
   var people = gon.group_people.length
   window.memberHere = [];
   var contentstring = "";
   var tryarray=[];
-  
-  for(i=0; i<gon.places.length; i++) {      
-    
-    console.log("\n\n" + i);
-    console.log("Place:" + gon.places[i].name)
+
+  for(i=0; i<gon.places.length; i++) {
+
+
+
     window.a[i]=""
-    console.log("Gravatars for this place: " + window.a);
-    for(n=0; n<people; n++){ 
-      console.log("Person: " + gon.group_people[n]);
-      
+
+    for(n=0; n<people; n++){
+
+
       if (gon.group_people[n][1] == gon.places[i]["id"]){
-        console.log("Person place_id matches Place ID. (GOOD)");
-        
+
+
         //window.memberHere.push(gon.group_people[n][0])
         window.a[i]=window.a[i].concat(" <IMG BORDER='0' ALIGN='Left' SRC='"+ gon.group_people[n][0] + "'> ")
       };
       //window.a[i]=window.a[i].concat("' <IMG BORDER='0' ALIGN='Left' SRC='"+ window.memberHere[n] + "'> '")
     };
-                    
+
     var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(gon.places[i]["lat"], gon.places[i]["lng"]), 
+      position: new google.maps.LatLng(gon.places[i]["lat"], gon.places[i]["lng"]),
       map: myMap,
-      title: gon.places[i]["name"] 
+      title: gon.places[i]["name"]
     });
-    
-    console.log("Marker created: " + marker);
-    
+
+
+
     //info window for each place
     (function(marker, i){
       google.maps.event.addListener(marker, 'click', function() {
         infowindow = new google.maps.InfoWindow({
           content: (gon.places[i]["name"]).link("/places/"+ gon.places[i]["id"]) + "<br><br>" + window.a[i]
           //contentstring
-        });  
+        });
         infowindow.open(myMap,marker);
-      
+
       });
     })(marker,i);
-    console.log("Added info window to 'click' for Marker.");
-        
+
+
   }
 }
 
@@ -85,16 +85,16 @@ function initialize() {
         script.src = 'https://maps.googleapis.com/maps/api/js?key=<%=ENV["GOOGLE_API_KEY"]%>&sensor=false&' +
             'callback=initialize';
         document.body.appendChild(script);
-      }  
+      }
 //This is for a place search to get latlong and business name, implement once markers work on      //javascript. Took from google place api. Will need to conform to place syntax to get all information
 //desired in the hash. The above does not produce a user name. Worst case it is user dependent until
 //AJAX and JSON is configured correctly with returning information to the database. The api query to
 //places in JSON can be parsed in a method and implemented along side this more general information
-//gathering method. 
-  
+//gathering method.
+
   // var infowindow = new google.maps.InfoWindow();
   // var service = new google.maps.places.PlacesService(map);
-  // 
+  //
   // service.getDetails(request, function(place, status) {
   //  if (status == google.maps.places.PlacesServiceStatus.OK) {
   //    var marker = new google.maps.Marker({

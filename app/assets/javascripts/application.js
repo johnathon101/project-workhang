@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$.ajax({
+          url: 'http://hoppyhour.herokuapp.com/',
+          success: function(result){
+             console.log("HH Awake");
+          },
+          error: function(result){
+              alert("HH Failed");
+          }
+       });
