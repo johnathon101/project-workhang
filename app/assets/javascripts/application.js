@@ -14,11 +14,11 @@
 //= require jquery_ujs
 //= require_tree .
 $.ajax({
-          url: 'http://hoppyhour.herokuapp.com/',
+          url: 'http://hoppyhour.herokuapp.com/workhang/42  -96',
           success: function(result){
              console.log("HH Awake");
           },
           error: function(result){
-              alert("HH Failed");
+              console.log("HH Failed");
           }
        });

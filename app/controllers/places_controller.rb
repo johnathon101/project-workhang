@@ -1,6 +1,9 @@
 class PlacesController < ApplicationController
   #Create methods to respond to js calls
   respond_to :json, :js
+  # rescue_from 'OpenURI::HTTPError' do
+  #       @message = " I am sorry, HoppyHour is not available"
+  # end
 
 
   @@globalresults=[]
@@ -99,9 +102,18 @@ class PlacesController < ApplicationController
     @place = Place.find_by_id(params[:id])
     lat = (@place.lat).to_s.gsub(".","e")
     lng = (@place.lng).to_s.gsub(".","e")
-    hh_response = JSON.load(open("http://hoppyhour.herokuapp.com/workhang/#{lat}/#{lng}"))
-    @beers = hh_response["beer"]
-    @foods = hh_response["food"]
+    #hh_response = JSON.load(open("http://hoppyhour.herokuapp.com/workhang/#{lat}/#{lng}"))
+    begin
+      x = open("http://hoppyhour.herokuapp.com/workhang/#{lat}/#{lng}")
+    rescue OpenURI::HTTPError
+      @message = "HoppyHour is not available."
+    else
+      hh_response = JSON.load(x)
+    end
+    if !hh_response.blank?
+      @beers = hh_response["beer"]
+      @foods = hh_response["food"]
+    end
     @present_people=Array.new
     @reviews=Review.where(:place_id => @place.id)
     @imgloc="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@place.photoref}&sensor=false&key=#{ENV['GOOGLE_API_KEY']}"
