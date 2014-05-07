@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    wake_up_hh = JSON.load(open("http://hoppyhour.herokuapp.com/workhang/42/-96"))
     @user = User.new
     if current_user && current_user.groups != [] || nil
     groups = current_user.groups
@@ -59,12 +60,12 @@ class PagesController < ApplicationController
     gon.places = @places
     gon.group_people=@user_gravs
   end
-  
+
   def logout
-    
+
   end
-  
+
   def about
-    
+
   end
 end
