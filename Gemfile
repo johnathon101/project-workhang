@@ -13,6 +13,9 @@ gem 'gon'
 
 gem 'pg'
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 gem 'json'
 # Gems used only for assets and not required
 # in production environments by default.
