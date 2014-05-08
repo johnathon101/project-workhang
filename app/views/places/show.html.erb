@@ -37,6 +37,25 @@
   </div>
 <% end %>
 <p><%= link_to "review this place", new_review_path(:place_id => @place.id), :id => 'green_button' %></p>
+
+<% if !@beers.blank? %>
+  <h2><%= @place.name %> has the following beverage(s) available:</h2>
+  <% @beers.each do |beer| %>
+    <h4><%=beer["name"]%>, <%=beer["brewery"] %></h4>
+  <% end %>
+<% end %>
+
+<% if !@foods.blank? %>
+  <h2><%= @place.name %> has the following food item(s) available today:</h2><br>
+  <% @foods.each do |food| %>
+    <%= food["entree"] %>, <%= food["sides"] %>, <%= food["price"] %><br>
+  <% end %>
+<% end %>
+
+<% if @message %>
+  <h2><%= @message %></h2>
+<% end %>
+
 <% if @reviews != [] %>
   <h2>REVIEWS</h2>
   <% @reviews.each do |review| %>
@@ -44,13 +63,13 @@
     <% @reviewer = User.where(:id => review.user_id) %>
     <% @reviewer = @reviewer.first %>
     <% if @reviewer != nil %>
-      <p><strong>by 
+      <p><strong>by
       <%= @reviewer.fname %> <%= @reviewer.lname %></strong></p>
-        
+
     <% end %>
     <p><%= review.content %></p>
     <% if current_user.id == review.user_id %>
-      <h4><%= link_to "Edit", show_review_path(:id => review.id) %>   
+      <h4><%= link_to "Edit", show_review_path(:id => review.id) %>
       <%= link_to "Delete", delete_review_path(:id => review.id) %></h4>
     <% end %>
     <hr>
