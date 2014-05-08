@@ -1,8 +1,8 @@
 html,
-body { 
-  height: 100%; 
-  margin: 0; 
-  padding: 0; 
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #body {
@@ -48,8 +48,8 @@ body {
   margin-top: 0px;
 }
 
-#map-canvas { 
-  height: 350px; 
+#map-canvas {
+  height: 350px;
 }
 
 #present_person {

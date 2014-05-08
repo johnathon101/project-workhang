@@ -3,13 +3,13 @@
 <head>
 
   <title>Work/Hang</title>
-  
+
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <link rel="icon" type="image/png" href="https://s3.amazonaws.com/WorkHang/WorkHang160.png" sizes="160x160">
-  <link rel="apple-touch-icon" href="https://s3.amazonaws.com/WorkHang/WorkHang57.png"/>  
+  <link rel="apple-touch-icon" href="https://s3.amazonaws.com/WorkHang/WorkHang57.png"/>
   <link rel="icon" type="image/png" href="https://s3.amazonaws.com/WorkHang/WorkHang96.png" sizes="96x96">
   <link rel="icon" type="image/png" href="https://s3.amazonaws.com/WorkHang/WorkHang16.png" sizes="16x16">
   <link rel="icon" type="image/png" href="https://s3.amazonaws.com/WorkHang/WorkHang32.png" sizes="32x32">
@@ -22,7 +22,7 @@
   <div id="logo">
     <a href="/"><img src="https://s3.amazonaws.com/WorkHang/WorkHangTransparent.png" alt="logo"></a>
   </div>
-  
+
   <% if current_user %>
 
   <div id="header_middle">
@@ -33,9 +33,9 @@
       <li><a href="/about">ABOUT</a></li>
     </ul>
   </div>
-  
+
   <% @check_ins = current_user.check_ins.where(time_out: nil) %>
-  <% if @check_ins == [] %>   
+  <% if @check_ins == [] %>
   <div class="checkin_search">
     <%= form_tag "/places/results" do %>
     <input type="text" name="query" placeholder="Check into a place." id="checkin_search" size="42"><br>
@@ -50,7 +50,7 @@
     </div>
   <% end %>
   </div>
-  
+
   <div id="profpic">
   <a href="/users/<%= current_user.id %>"><img src="<%= Gravatar.new("#{current_user.email}").image_url + "?s=75" %>"></a>
   </div>
@@ -62,22 +62,22 @@
     <a href="/logout"><img src="https://s3.amazonaws.com/WorkHang/Power.png"></a>
   </div>
   </div>
-  
+
   <% else %>
-  
+
   <div id="login">
     <%= form_tag logins_path do %>
-  
+
       <p>
         <%= text_field_tag :email, nil, placeholder: "email", size: 27 %>
-  
+
         <%= password_field_tag :password, nil, placeholder: "password", size: 27 %>
-  
+
       <%= submit_tag "log in" %>
             </p>
     <% end %>
   </div>
-  
+
   <% end %>
   </div>
 </nav>

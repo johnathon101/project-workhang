@@ -59,12 +59,12 @@ class PagesController < ApplicationController
     gon.places = @places
     gon.group_people=@user_gravs
   end
-  
+
   def logout
-    
+
   end
-  
+
   def about
-    
+
   end
 end
