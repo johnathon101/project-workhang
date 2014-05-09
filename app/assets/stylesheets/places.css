@@ -63,3 +63,23 @@ input[type="submit"] {
   padding: 5px 14px 5px 14px;
   border-radius: 5px;
 }
+#beers table{
+  text-align:center;
+}
+
+#beers td{
+  padding-left:50px;
+}
+#beers th{
+  padding-left:50px;
+}
+
+#foods table{
+  text-align:center;
+}
+#foods td{
+  padding-left:140px;
+}
+#foods th{
+  padding-left:140px;
+}
