@@ -39,7 +39,7 @@
 <p><%= link_to "review this place", new_review_path(:place_id => @place.id), :id => 'green_button' %></p>
 
 <% if !@beers.blank? %>
-  <div id="beers">
+  <div id="beers" class = "clearfix">
     <h2><%= @place.name %> has the following beverage(s) available:</h2>
     <table>
       <thead>
@@ -49,8 +49,8 @@
       <tbody>
         <% @beers.each do |beer| %>
           <tr>
-            <td><h4><%=beer["name"]%></h4></td> 
-            <td><h4><%=beer["brewery"] %></h4></td>
+            <td><%=beer["name"]%></td> 
+            <td><%=beer["brewery"] %></td>
           </tr>
         <% end %>
       </tbody>
@@ -59,7 +59,7 @@
 <% end %>
 
 <% if !@foods.blank? %>
-  <div id= "foods">
+  <div id= "foods" class="clearfix">
     <h2><%= @place.name %> has the following food item(s) available today:</h2>
     <table>
       <thead>
@@ -70,9 +70,9 @@
       <tbody>
         <% @foods.each do |food| %>
         <tr>
-          <td><h4><%= food["entree"] %></h4></td> 
-          <td><h4><%= food["sides"] %></h4></td>
-          <td><h4><%= sprintf('%02.2f', food["price"]) %></h4></td>
+          <td><%= food["entree"] %></td> 
+          <td><%= food["sides"] %></td>
+          <td><%= sprintf('%02.2f', food["price"]) %></td>
         </tr>
       <% end %>
     </tbody>

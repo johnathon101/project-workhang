@@ -63,23 +63,35 @@ input[type="submit"] {
   padding: 5px 14px 5px 14px;
   border-radius: 5px;
 }
+
 #beers table{
+  width:100%;
+  float:left;
   text-align:center;
+  font-family: "museo-slab";
+  color: #878787;
+  font-size: 15px;
 }
 
 #beers td{
-  padding-left:50px;
+  text-align:left;
+
 }
 #beers th{
-  padding-left:50px;
+  text-align:left;
 }
 
 #foods table{
+  width:100%;
   text-align:center;
+  float:left;
+  font-family: "museo-slab";
+  color: #878787;
+  font-size: 15px;
 }
 #foods td{
-  padding-left:140px;
+   text-align:left;
 }
 #foods th{
-  padding-left:140px;
+ text-align:left;
 }
