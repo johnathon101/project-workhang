@@ -106,7 +106,7 @@ class PlacesController < ApplicationController
     begin
       x = open("http://hoppyhour.herokuapp.com/workhang/#{lat}/#{lng}")
     rescue OpenURI::HTTPError
-      @message = "HoppyHour is not available."
+      @message = "No HoppyHour Information Available, Add It Now!"
     else
       hh_response = JSON.load(x)
     end
