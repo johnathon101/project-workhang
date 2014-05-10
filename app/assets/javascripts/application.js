@@ -16,9 +16,9 @@
 $.ajax({
           url: 'http://hoppyhour.herokuapp.com/workhang/42  -96',
           success: function(result){
-             console.log("HH Awake");
+            console.log("Thank You For Visiting Work/Hang")
           },
           error: function(result){
-              console.log("HH Failed");
+            console.log("Thank You For Visiting Work/Hang")
           }
-       });
+});
